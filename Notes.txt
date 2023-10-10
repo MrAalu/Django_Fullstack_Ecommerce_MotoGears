@@ -1,0 +1,24 @@
+Price 
+Sale Price
+Image
+Title
+Description
+Category
+Brand ,company
+Created_date (Sort new)
+
+Image Box Tag : Sale / New , Logic on Template 
+-if saleprice exists then put 'SALE'.
+-if recent week added then put 'NEW'.
+-if both then show both 'sale and new'
+
+
+Pages : 
+1 Home  
+2 Shop with Search/Sort 
+2 Individual Product Page
+3 Shopping Cart , Proceed to checkout
+3 Checkout
+
+
+BreadCrumbs

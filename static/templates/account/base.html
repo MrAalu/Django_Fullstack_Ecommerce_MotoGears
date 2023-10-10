@@ -1,0 +1,58 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block head_title %}{% endblock head_title %}</title>
+  {% block extra_head %}
+  {% endblock extra_head %}
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
+</head>
+
+<body class="container">
+  {% block body %}
+
+  {% if messages %}
+  <div>
+    <strong>{% trans "Messages:" %}</strong>
+    <ul>
+      {% for message in messages %}
+      <li>{{message}}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <!-- MENU ITEMS -->
+  <!-- <div>
+    <strong>{% trans "Menu:" %}</strong>
+    <ul>
+      {% if user.is_authenticated %}
+      <li><a href="{% url 'account_email' %}">{% trans "Change Email" %}</a></li>
+      <li><a href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a></li>
+      {% else %}
+      <li><a href="{% url 'account_login' %}">{% trans "Sign In" %}</a></li>
+      <li><a href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a></li>
+      {% endif %}
+    </ul>
+  </div> -->
+
+  {% block content %}
+  {% endblock content %}
+  {% endblock body %}
+  {% block extra_body %}
+  {% endblock extra_body %}
+
+  <!-- MDB -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+
+</body>
+
+</html>
