@@ -1,3 +1,22 @@
-h2 {
-  color: blue;
+section img {
+  width: 400px;
+}
+
+section a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+section a:hover {
+  color: white;
+  background-color: #fa7d16;
+}
+
+.banner {
+  background-color: #f7f7f7;
+  padding: 60px 0;
 }
