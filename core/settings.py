@@ -47,6 +47,10 @@ INSTALLED_APPS = [
     # -----
     "crispy_forms",
     "crispy_bootstrap4",
+    "home",
+    "cart",
+    "shop",
+    "userprofile",
     # ALL AUTH
     "django.contrib.sites",
     "allauth",
