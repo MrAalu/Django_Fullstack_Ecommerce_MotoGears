@@ -1,9 +1,30 @@
 {% load static %}
 
-<!-- Products ShowCase Begin -->
+<link rel="stylesheet" href="{% static 'css/discount_products.css' %}" />
 
 <div class="sale-products my-3">
   <h2 class="h2 my-3">Discount Offers</h2>
-</div>
 
-<!-- Products ShowCase End -->
+  <div class="row products-row">
+    <!-- Products ShowCase Be gin -->
+    <div class="col-md-3">
+      <!-- 1st -->
+      <div class="card">
+        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+          <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="img-fluid" />
+          <a href="#!"><div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div></a>
+          <span class="span-tag">10% Off</span>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p>
+            Price : <s style="color: red;">Nrs.1300</s> <span style="color: green;">Nrs.950</span>
+          </p>
+          <a href="#" class="btn btn-primary btn-hidden" role="button">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products ShowCase End -->
+  </div>
+</div>

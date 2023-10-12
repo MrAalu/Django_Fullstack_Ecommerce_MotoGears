@@ -1,0 +1,32 @@
+.card img {
+  width: 15rem;
+}
+
+.card {
+  width: fit-content;
+  margin: 1rem 0;
+}
+
+.products-row .col {
+  width: fit-content;
+}
+
+.card .span-tag {
+  /* style="position: absolute; top: 0; left: 0; background-color: red; color: white; padding: 5px;" */
+  position: absolute;
+  background-color: red;
+  color: white;
+  top: 5px;
+  left: 0;
+  padding: 3px 8px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.card .btn-hidden {
+  display: none;
+}
+
+.card:hover .btn-hidden {
+  display: block;
+}

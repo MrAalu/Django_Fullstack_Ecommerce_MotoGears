@@ -20,11 +20,13 @@ class ProductModel(models.Model):
     title = models.CharField(max_length=100)
     image = models.ImageField(upload_to="products/")
     original_price = models.DecimalField(max_digits=10, decimal_places=2)
-    sale_price = models.DecimalField(max_digits=10, decimal_places=2)
-    description = models.TextField()
+    sale_price = models.DecimalField(
+        max_digits=10, decimal_places=2, null=True, blank=True
+    )
+    description = models.TextField(null=True, blank=True)
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
     brand = models.ForeignKey(ProductBrand, on_delete=models.CASCADE)
-    quantity = models.IntegerField()
+    quantity = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
