@@ -1,11 +1,6 @@
-Price 
-Sale Price
-Image
-Title
-Description
-Category
-Brand ,company
-Created_date (Sort new)
+TODO : Products Model with Category Choice/Extra Category Model + Brand 
+
+Todo 2 : Navbar middle ma Search functionality where after search display products in '/search' 
 
 Image Box Tag : Sale / New , Logic on Template 
 -if saleprice exists then put 'SALE'.
@@ -14,11 +9,18 @@ Image Box Tag : Sale / New , Logic on Template
 
 
 Pages : 
-1 Home  
+1 HOME
 2 Shop with Search/Sort 
 2 Individual Product Page
 3 Shopping Cart , Proceed to checkout
 3 Checkout
 
+HOME page detail :
+Banner,
+Header Cool Collection,
+Discount Offers Products,
+New Arrivals.
 
-BreadCrumbs
+
+BreadCrumbs in SHOP.html page
+

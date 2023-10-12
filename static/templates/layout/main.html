@@ -16,23 +16,28 @@
 
   <body>
     {% include 'layout/navbar.html' %}
-    <div class="container">
-      {% if messages %}
-        {% for message in messages %}
-          {% if 'error' in message.tags %}
-            <div class="alert alert-danger alert-dismissible role=alert">
-              {{ message }}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          {% else %}
-            <div class="alert alert-{{ message.tags }} alert-dismissible role=alert">
-              {{ message }}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          {% endif %}
-        {% endfor %}
-      {% endif %}
 
+    {% if messages %}
+      {% for message in messages %}
+        {% if 'error' in message.tags %}
+          <div class="alert alert-danger alert-dismissible role=alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% else %}
+          <div class="alert alert-{{ message.tags }} alert-dismissible role=alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    {% block header %}
+
+    {% endblock %}
+
+    <div class="container">
       {% block content %}
 
       {% endblock %}

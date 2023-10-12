@@ -1,32 +1,11 @@
-{% extends 'layout/main.html' %} {% load static %} {% block content %}
-  <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% extends 'layout/main.html' %} {% load static %}
 
-  <!-- Banner Section Begin -->
-  <section class="banner spad">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 ms-5 mt-3">
-          <div class="text-center">
-            <img src="{% static 'images/ExhaustBikeModel.jpg' %}" alt="" />
-          </div>
-        </div>
-        <div class="col my-auto">
-          <h2>Exhaust's Collection</h2>
-          <a href="#">Shop now</a>
-        </div>
-      </div>
-      <div class="row" style="text-align: right;">
-        <div class="col my-auto">
-          <h2>Sticker's Collection</h2>
-          <a href="#">Shop now</a>
-        </div>
-        <div class="col-md-6 ms-5 mt-3">
-          <div class="text-center">
-            <img src="{% static 'images/StickerBikeModel.jpg' %}" alt="" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Banner Section End -->
+{% block header %}
+  {% comment %} {% include 'home/banner.html' %} {% endcomment %}
+{% endblock %}
+
+{% block content %}
+  {% comment %} {% include 'home/collection.html' %} {% endcomment %}
+
+  {% include 'home/discount_products.html' %}
 {% endblock %}

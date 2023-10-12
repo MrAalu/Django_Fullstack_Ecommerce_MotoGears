@@ -8,6 +8,13 @@
 
 SOON
 
+### TestCase
+
+1. TestCase : used when you want to test DB
+2. SimpleTestCase : used when DB is not necessary
+3. TransactionTestCase : directly test DB Transactions
+4. LiveServerTestCase : launches liveserver thread useful for testing with Browser-based tools like selenium.
+
 ## Django Commands
 
 1. Create a Requirements.txt
