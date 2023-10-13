@@ -1,0 +1,55 @@
+{% extends 'layout/main.html' %}
+{% load static %}
+{% block breadcrumbs %}
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid" style="display: flex;flex-direction: column;">
+      <div>
+        <h1>Product Detail</h1>
+      </div>
+      <div>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{% url 'homepage' %}">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="{% url 'homepage' %}">Shop</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              <a href="{% url 'view_product' product.id %}">{{ product.title }}</a>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+  <div class="card my-3">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{ product.image.url }}" alt="Product Image Here" class="img-fluid rounded-start" style="max-width: 300px; " />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2 class="card-title">{{ product.title }}</h2>
+          <p class="card-text">{{ product.description }}</p>
+
+          <p>Category : {{ product.category }}</p>
+          <p>Brand : {{ product.brand }}</p>
+
+          <h4><s style="color: red;">Nrs.{{ product.original_price }}</s> <span style="color: green;">{{ product.sale_price }}</span></h4>
+
+          {% if product.quantity <= 0 %}
+            <a href="#" class="btn btn-dark btn-hidden disabled" role="button">Out of Stock</a>
+          {% else %}
+            <p>Only '{{ product.quantity }}' left in stock.</p>
+            <a href="#" class="btn btn-primary btn-hidden" role="button">Add to Cart</a>
+            <a href="#" class="btn btn-success btn-hidden" role="button">Buy Now</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
