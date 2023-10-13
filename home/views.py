@@ -7,8 +7,10 @@ from decimal import Decimal
 
 class Homepage(View):
     def get(self, request):
-        # Fetch products with Discounts
-        discount_products = ProductModel.objects.filter(sale_price__isnull=False)
+        # Fetch only 4 recent updated products with Discounts
+        discount_products = ProductModel.objects.filter(
+            sale_price__isnull=False
+        ).order_by("-updated_at")[:4]
 
         # Calculate discount percentage for each product
         for product in discount_products:

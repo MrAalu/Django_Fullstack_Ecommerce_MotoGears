@@ -27,7 +27,12 @@ class ProductModel(models.Model):
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
     brand = models.ForeignKey(ProductBrand, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
-    created_at = models.DateTimeField(auto_now=True)
+
+    # Created at is only changed once when model is created for first time.
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    # Everytime model is updated this field value will be changed
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title

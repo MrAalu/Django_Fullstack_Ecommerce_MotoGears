@@ -37,3 +37,10 @@
   transition-duration: 100ms;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.137);
 }
+
+#discount_product_title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 12rem;
+}
