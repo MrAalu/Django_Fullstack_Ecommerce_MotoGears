@@ -1,3 +1,5 @@
+/* CSS for Products i.e. Discount Products & New Arrival Products */
+
 .card .bg-image img {
   width: 15rem; /* Set the desired width */
   height: 200px; /* Set the desired height */
@@ -16,8 +18,6 @@
 .card .span-tag {
   /* style="position: absolute; top: 0; left: 0; background-color: red; color: white; padding: 5px;" */
   position: absolute;
-  background-color: red;
-  color: white;
   top: 5px;
   left: 0;
   padding: 3px 8px;
@@ -25,12 +25,14 @@
   border-top-right-radius: 5px;
 }
 
-.card .btn-hidden {
-  display: none;
+.card #discount_tag {
+  background-color: red;
+  color: white;
 }
 
-.card:hover .btn-hidden {
-  display: block;
+.card #new_tag {
+  background-color: rgba(148, 148, 148, 0.404);
+  color: black;
 }
 
 .card:hover {

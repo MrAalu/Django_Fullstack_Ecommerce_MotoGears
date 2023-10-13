@@ -23,6 +23,12 @@ class Homepage(View):
                 Decimal("0.00")
             )
 
-        data = {"discount_products": discount_products}
+        # recent products (new arrivals) fetching
+        new_arrival_products = ProductModel.objects.order_by("-created_at")[:4]
+
+        data = {
+            "discount_products": discount_products,
+            "new_arrival_products": new_arrival_products,
+        }
 
         return render(request, "home/index.html", data)

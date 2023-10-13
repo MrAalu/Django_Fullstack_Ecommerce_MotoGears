@@ -1,0 +1,44 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/products.css' %}" />
+
+<div class="sale-products my-3">
+  <h2 class="h2 my-3">New Arrivals</h2>
+
+  <div class="row products-row">
+    <!-- New Arrivals Products ShowCase Begin -->
+
+    {% if new_arrival_products %}
+      {% for new_product in new_arrival_products %}
+        <div class="col-md-3">
+          <!-- 1st -->
+          <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="{{ new_product.image.url }}" class="img-fluid" />
+              <a href="#"><div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div></a>
+              <span class="span-tag" id="new_tag">New</span>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title" id="discount_product_title">{{ new_product.title }}</h5>
+              <p>
+                Price : Nrs.{% if new_product.sale_price %}
+                  {{ new_product.sale_price }}
+                {% else %}
+                  {{ new_product.original_price }}
+                {% endif %}
+              </p>
+
+              {% if new_product.quantity <= 0 %}
+                <a href="#" class="btn btn-primary btn-hidden disabled" role="button">Out of Stock</a>
+              {% else %}
+                <a href="#" class="btn btn-primary btn-hidden" role="button">Add to Cart</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <!-- New Arrivals Products ShowCase End -->
+  </div>
+</div>

@@ -1,6 +1,6 @@
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'css/discount_products.css' %}" />
+<link rel="stylesheet" href="{% static 'css/products.css' %}" />
 
 <div class="sale-products my-3">
   <h2 class="h2 my-3">Discount Offers</h2>
@@ -16,14 +16,19 @@
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
               <img src="{{ discount_product.image.url }}" class="img-fluid" />
               <a href="#!"><div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div></a>
-              <span class="span-tag">{{ discount_product.discount_percentage }}% Off</span>
+              <span class="span-tag" id="discount_tag">{{ discount_product.discount_percentage }}% Off</span>
             </div>
             <div class="card-body">
               <h5 class="card-title" id="discount_product_title">{{ discount_product.title }}</h5>
               <p>
                 Price : <s style="color: red;">Nrs.{{ discount_product.original_price }}</s> <span style="color: green;">{{ discount_product.sale_price }}</span>
               </p>
-              <a href="#" class="btn btn-primary btn-hidden" role="button">Add to Cart</a>
+
+              {% if discount_product.quantity <= 0 %}
+                <a href="#" class="btn btn-primary btn-hidden disabled" role="button">Out of Stock</a>
+              {% else %}
+                <a href="#" class="btn btn-primary btn-hidden" role="button">Add to Cart</a>
+              {% endif %}
             </div>
           </div>
         </div>
