@@ -14,6 +14,7 @@ Pages :
 2 Individual Product Page
 3 Shopping Cart , Proceed to checkout
 3 Checkout
+4 Order Tracking , track order with unique order id and email
 
 HOME page detail :
 Banner,

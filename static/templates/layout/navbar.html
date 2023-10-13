@@ -1,6 +1,6 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-light" data-bs-theme="light">
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-light top-nav-bar" data-bs-theme="light">
   <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'homepage' %}"><img style="margin: 0 0.5rem" width="50rem" src="{% static 'images/motocross.png' %}" alt="Django" />MotoGears</a>
 
@@ -9,8 +9,8 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto">
         <a class="nav-link active mx-2" aria-current="page" href="{% url 'homepage' %}">Home</a>
-        <a class="nav-link mx-2" href="#">Shop</a>
-        <a class="nav-link mx-2" href="#">Cart</a>
+        <a class="nav-link mx-2" href="{% url 'shop' %}">Shop</a>
+        <a class="nav-link mx-2" href="{% url 'cart' %}">Cart</a>
 
         {% if user.is_authenticated %}
           <a class="nav-link mx-2" href="#">Profile</a>

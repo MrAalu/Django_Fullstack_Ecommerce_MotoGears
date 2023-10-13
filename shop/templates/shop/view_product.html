@@ -1,7 +1,9 @@
 {% extends 'layout/main.html' %}
 {% load static %}
+
 {% block breadcrumbs %}
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <link rel="stylesheet" href="{% static 'css/view_product.css' %}" />
+  <nav class="navbar navbar-expand-lg navbar-light bg-light breadcrumb-navbar">
     <div class="container-fluid" style="display: flex;flex-direction: column;">
       <div>
         <h1>Product Detail</h1>
@@ -39,7 +41,11 @@
           <p>Category : {{ product.category }}</p>
           <p>Brand : {{ product.brand }}</p>
 
-          <h4><s style="color: red;">Nrs.{{ product.original_price }}</s> <span style="color: green;">{{ product.sale_price }}</span></h4>
+          {% if product.sale_price %}
+            <h4><s style="color: red;">Nrs.{{ product.original_price }}</s> <span style="color: green;">{{ product.sale_price }}</span></h4>
+          {% else %}
+            <h4><span>Nrs.{{ product.original_price }}</span></h4>
+          {% endif %}
 
           {% if product.quantity <= 0 %}
             <a href="#" class="btn btn-dark btn-hidden disabled" role="button">Out of Stock</a>

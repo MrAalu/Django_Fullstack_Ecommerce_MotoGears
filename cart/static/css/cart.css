@@ -1,0 +1,24 @@
+.custom-number-input {
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.custom-number-input input {
+  width: 100px;
+  text-align: center;
+}
+
+.custom-number-input button {
+  background-color: #f0f0f0;
+  border: none;
+  cursor: pointer;
+  padding: 0px 1rem;
+  margin: 0 0.5rem;
+}
+
+.breadcrumb-navbar {
+  background-color: transparent;
+  box-shadow: none;
+}
