@@ -6,25 +6,30 @@
   <h2 class="h2 my-3">Discount Offers</h2>
 
   <div class="row products-row">
-    <!-- Products ShowCase Be gin -->
-    <div class="col-md-3">
-      <!-- 1st -->
-      <div class="card">
-        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-          <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="img-fluid" />
-          <a href="#!"><div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div></a>
-          <span class="span-tag">10% Off</span>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p>
-            Price : <s style="color: red;">Nrs.1300</s> <span style="color: green;">Nrs.950</span>
-          </p>
-          <a href="#" class="btn btn-primary btn-hidden" role="button">Add to Cart</a>
-        </div>
-      </div>
-    </div>
+    <!-- Discount Products ShowCase Begin -->
 
-    <!-- Products ShowCase End -->
+    {% if discount_products %}
+      {% for discount_product in discount_products %}
+        <div class="col-md-3">
+          <!-- 1st -->
+          <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="{{ discount_product.image.url }}" class="img-fluid" />
+              <a href="#!"><div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div></a>
+              <span class="span-tag">{{ discount_product.discount_percentage }}% Off</span>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{ discount_product.title }}</h5>
+              <p>
+                Price : <s style="color: red;">Nrs.{{ discount_product.original_price }}</s> <span style="color: green;">{{ discount_product.sale_price }}</span>
+              </p>
+              <a href="#" class="btn btn-primary btn-hidden" role="button">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <!-- Discount Products ShowCase End -->
   </div>
 </div>

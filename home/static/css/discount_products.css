@@ -1,5 +1,7 @@
-.card img {
-  width: 15rem;
+.card .bg-image img {
+  width: 15rem; /* Set the desired width */
+  height: 200px; /* Set the desired height */
+  object-fit: contain; /* To maintain aspect ratio and cover the container */
 }
 
 .card {
@@ -29,4 +31,9 @@
 
 .card:hover .btn-hidden {
   display: block;
+}
+
+.card:hover {
+  transition-duration: 100ms;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.137);
 }
