@@ -87,11 +87,11 @@ def addToCartView(request):
                     price=product_price,
                 )
 
-            try:
-                cart.full_clean()
-            except ValidationError as e:
-                pass
-            cart.save()
+        try:
+            cart.full_clean()
+        except ValidationError as e:
+            pass
+        cart.save()
 
         return JsonResponse(
             {"success": True, "message": "Item added to Cart successfully"}
