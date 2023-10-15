@@ -17,6 +17,9 @@
   <body>
     {% include 'layout/navbar.html' %}
 
+    <!-- Generate a Csrftoken cookie when user visits the site -->
+    {% csrf_token %}
+
     {% if messages %}
       {% for message in messages %}
         {% if 'error' in message.tags %}

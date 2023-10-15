@@ -9,7 +9,7 @@
     {% if new_arrival_products %}
       <h2 class="h2 my-3">New Arrivals</h2>
       {% for new_product in new_arrival_products %}
-        <div class="col-md-3">
+        <div class="col col-md-4 col-xs-4">
           <!-- 1st -->
           <div class="card">
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
@@ -28,9 +28,9 @@
               </p>
 
               {% if new_product.quantity <= 0 %}
-                <a href="#" class="btn btn-dark btn-hidden disabled" role="button">Out of Stock</a>
+                <button class="btn btn-primary btn-dark disabled">Out of Stock</button>
               {% else %}
-                <a class="btn btn-primary addtocartbtn" data-product-id="{{ new_product.id }}">Add to Cart</a>
+                <button class="btn btn-primary addtocartbtns" data-product-id="{{ new_product.id }}">Add to Cart</button>
               {% endif %}
             </div>
           </div>

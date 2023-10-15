@@ -2,6 +2,9 @@ Todo  : Navbar middle ma Search functionality where after search display product
 
 Todo  : Cart page ma Qty inc/dec garda backend ma update too
 
+TODO : Partition JS Code. 
+ALso , add View btn icon on products 
+
 Pages : 
 1 HOME
 2 Shop with Search/Sort 

@@ -9,13 +9,13 @@
     {% if discount_products %}
       <h2 class="h2 my-3">Discount Offers</h2>
       {% for discount_product in discount_products %}
-        <div class="col-md-3">
+        <div class="col col-md-4 col-xs-4">
           <!-- 1st -->
           <div class="card">
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
               <img src="{{ discount_product.image.url }}" class="img-fluid" />
               <a href="{% url 'view_product' discount_product.id %}"><div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div></a>
-              <span class="span-tag" id="discount_tag">{{ discount_product.discount_percentage }}% Off</span>
+              <span class="span-tag" id="discount_tag">-{{ discount_product.discount_percentage }}% Off</span>
             </div>
             <div class="card-body">
               <h5 class="card-title" id="discount_product_title">{{ discount_product.title }}</h5>
@@ -26,7 +26,7 @@
               {% if discount_product.quantity <= 0 %}
                 <button class="btn btn-primary btn-dark disabled">Out of Stock</button>
               {% else %}
-                <a class="btn btn-primary addtocartbtn" data-product-id="{{ discount_product.id }}">Add to Cart</a>
+                <button class="btn btn-primary addtocartbtns" data-product-id="{{ discount_product.id }}">Add to Cart</button>
               {% endif %}
             </div>
           </div>

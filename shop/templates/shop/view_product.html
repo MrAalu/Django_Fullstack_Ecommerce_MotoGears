@@ -15,7 +15,7 @@
               <a href="{% url 'homepage' %}">Home</a>
             </li>
             <li class="breadcrumb-item">
-              <a href="{% url 'homepage' %}">Shop</a>
+              <a href="{% url 'shop' %}">Shop</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">
               <a href="{% url 'view_product' product.id %}">{{ product.title }}</a>
@@ -28,6 +28,8 @@
 {% endblock %}
 
 {% block content %}
+  <link rel="stylesheet" href="{% static 'css/view_product.css' %}" />
+
   <div class="card my-3">
     <div class="row g-0">
       <div class="col-md-4">
@@ -50,9 +52,16 @@
           {% if product.quantity <= 0 %}
             <a href="#" class="btn btn-dark btn-hidden disabled" role="button">Out of Stock</a>
           {% else %}
-            <p>Only '{{ product.quantity }}' left in stock.</p>
-            <a href="#" class="btn btn-primary btn-hidden" role="button">Add to Cart</a>
-            <a href="#" class="btn btn-success btn-hidden" role="button">Buy Now</a>
+            <p>
+              Only <strong>'{{ product.quantity }}'</strong> left in stock.
+            </p>
+            <form>
+              <div class="form-group">
+                <input type="number" name="quantity" id="cart_item_quantity" min="1" value="1" max="{{ product.quantity }}" />
+                <button type="button" class="btn btn-primary" id="addtocartbtn" data-product-id="{{ product.id }}">Add to Cart</button>
+              </div>
+              <div class="info-message" id="infoMessage">Demo Warning Message</div>
+            </form>
           {% endif %}
         </div>
       </div>

@@ -76,7 +76,7 @@ def addToCartView(request):
 
             if cart is not None:
                 # The cart item exists, so update the quantity
-                cart.quantity += quantity
+                cart.quantity = cart.quantity + quantity
                 cart.save()
             else:
                 # Create a new Cart (OrderItemModel) instance for the Guest user using device ID
@@ -93,7 +93,9 @@ def addToCartView(request):
                 pass
             cart.save()
 
-        return JsonResponse({"message": "success"})
+        return JsonResponse(
+            {"success": True, "message": "Item added to Cart successfully"}
+        )
 
 
 # When a guest user logs in, update the customer in their cart items
