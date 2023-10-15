@@ -1,3 +1,5 @@
+// Increment and Decrement CART Quantity from Cart.html page
+
 document.getElementById("increment").addEventListener("click", function () {
   const quantityInput = document.getElementById("quantity");
   quantityInput.value = parseInt(quantityInput.value, 10) + 1;

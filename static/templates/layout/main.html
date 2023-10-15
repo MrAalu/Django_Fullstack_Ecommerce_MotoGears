@@ -50,8 +50,9 @@
       {% block content %}
 
       {% endblock %}
-      <script src="{% static 'js/index.js' %}"></script>
-      <script src="{% static 'js/addtocart.js' %}"></script>
+      <script type="module" src="{% static 'js/index.js' %}"></script>
+      <script type="module" src="{% static 'js/addToCartSimple.js' %}"></script>
+      <script type="module" src="{% static 'js/addToCartBulk.js' %}"></script>
     </div>
 
     <!-- MDB -->
