@@ -51,11 +51,6 @@ class OrderItemModel(models.Model):
     def calculate_total_price(self):
         return self.quantity * self.price
 
-    # to create a Cart , atleast DeviceID or Customer is required , Invoke using full_clean()  or clean()
-    def clean(self):
-        if not (self.customer and self.device_id):
-            raise ValidationError("Either 'customer' or 'device_id' must have a value.")
-
 
 # when user goes to Payment, this instance is created
 ORDER_STATUS_CHOICES = [

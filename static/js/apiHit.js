@@ -20,9 +20,9 @@ export const apiHit = async (productId, quantity) => {
       }
     );
     // console.log(response);
-    const data = response.data;
-
-    console.log(data);
+    const data = await response.data;
+    // console.log(data);
+    return data;
   } catch (error) {
     console.error("Error:", error);
   }

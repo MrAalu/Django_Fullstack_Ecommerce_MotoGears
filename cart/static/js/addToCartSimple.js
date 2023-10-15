@@ -18,15 +18,23 @@ const addItemToCart = async (event) => {
   // Find the info message element within the product container
   const infoMessage = productContainer.querySelector(".info-message");
 
+  const data = await apiHit(productId, quantity);
+
   // Update the info message for the specific product
-  infoMessage.textContent = "Item added to Cart successfully";
   infoMessage.style.display = "block";
 
-  apiHit(productId, quantity);
+  // Display backend jsonresponse message
+  if (data.success == true) {
+    infoMessage.style.color = "Green";
+    infoMessage.textContent = data.message;
+  } else {
+    infoMessage.style.color = "Red";
+    infoMessage.textContent = data.message;
+  }
 
   setTimeout(() => {
     infoMessage.style.display = "none";
-  }, 3000);
+  }, 2000);
 };
 
 // All Products showcase Add to cart button'S

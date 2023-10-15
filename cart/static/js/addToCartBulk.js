@@ -22,16 +22,27 @@ const addItemToCart_Quantity = async (event) => {
 
   // Input Field Validation Message
   const infoMessage = document.getElementById("infoMessage");
+  infoMessage.style.display = "block"; // Show the message
   if (total_Quantity > total_Quantity_left) {
     infoMessage.textContent = `Quantity cannot exceed ${total_Quantity_left},Out of Stock!`;
-    infoMessage.style.display = "block"; // Show the message
   } else if (total_Quantity <= 0) {
     infoMessage.textContent = `Minimum quantity is 1`;
-    infoMessage.style.display = "block"; // Show the message
   } else {
-    infoMessage.style.display = "none"; // Hide the message
-    apiHit(productId, total_Quantity);
+    const data = await apiHit(productId, total_Quantity);
+
+    // Display backend jsonresponse message
+    if (data.success == true) {
+      infoMessage.style.color = "Green";
+      infoMessage.textContent = data.message;
+    } else {
+      infoMessage.style.color = "Red";
+      infoMessage.textContent = data.message;
+    }
   }
+
+  setTimeout(() => {
+    infoMessage.style.display = "none";
+  }, 2000);
 };
 
 // Individual Product Page , add to cart button

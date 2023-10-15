@@ -46,7 +46,13 @@ def addToCartView(request):
         data = get_customer(request)
 
         if data is None:
-            return JsonResponse({"message": "Device ID or user is not available."})
+            return JsonResponse(
+                {
+                    "success": False,
+                    "message": "Failed to add item to Cart",
+                    "details": "Device ID or user is not available.",
+                }
+            )
 
         if request.user.is_authenticated:
             # Check if the cart item already exists for the Logged-in user
@@ -67,6 +73,7 @@ def addToCartView(request):
                     quantity=quantity,
                     price=product_price,
                 )
+        # User is not loggedin
         else:
             # Check if the cart item already exists for the Guest user using device ID
             try:
@@ -87,27 +94,7 @@ def addToCartView(request):
                     price=product_price,
                 )
 
-        try:
-            cart.full_clean()
-        except ValidationError as e:
-            pass
         cart.save()
-
         return JsonResponse(
-            {"success": True, "message": "Item added to Cart successfully"}
+            {"success": True, "message": "Successfully added item to Cart"}
         )
-
-
-# When a guest user logs in, update the customer in their cart items
-# @login_required
-# def merge_guest_cart_with_user_cart(request):
-#     guest_customer = GuestCustomer.objects.get(device_id=request.COOKIES.get('device'))
-#     user_customer = request.user
-
-#     # Update the customer field in OrderItemModel instances for the user
-#     OrderItemModel.objects.filter(customer=guest_customer).update(customer=user_customer)
-
-#     # Delete the guest customer record
-#     guest_customer.delete()
-
-#     return HttpResponse('Guest cart merged with user cart')
