@@ -12,7 +12,21 @@ const addItemToCart = async (event) => {
   const productId = button.getAttribute("data-product-id");
   const quantity = 1; // Replace with the desired quantity
 
+  // Find the closest parent element within class "card"
+  const productContainer = button.closest(".card");
+
+  // Find the info message element within the product container
+  const infoMessage = productContainer.querySelector(".info-message");
+
+  // Update the info message for the specific product
+  infoMessage.textContent = "Item added to Cart successfully";
+  infoMessage.style.display = "block";
+
   apiHit(productId, quantity);
+
+  setTimeout(() => {
+    infoMessage.style.display = "none";
+  }, 3000);
 };
 
 // All Products showcase Add to cart button'S

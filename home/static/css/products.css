@@ -46,3 +46,11 @@
   white-space: nowrap;
   width: 12rem;
 }
+
+/* Item Added to Cart prompt */
+.info-message {
+  color: green;
+  font-size: 12px;
+  margin-top: 5px;
+  display: none;
+}
