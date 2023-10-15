@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 
 class ProductCategory(models.Model):
@@ -40,10 +41,20 @@ class ProductModel(models.Model):
 
 # Users adding Products to cart creates new instance of this model
 class OrderItemModel(models.Model):
-    customer = models.ForeignKey(User, on_delete=models.CASCADE)
+    # If user not logged in then 'customer' would be null and device_id would be stored
+    customer = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    device_id = models.CharField(max_length=255, null=True, blank=True)
     product = models.ForeignKey(ProductModel, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def calculate_total_price(self):
+        return self.quantity * self.price
+
+    # to create a Cart , atleast DeviceID or Customer is required , Invoke using full_clean()  or clean()
+    def clean(self):
+        if not (self.customer and self.device_id):
+            raise ValidationError("Either 'customer' or 'device_id' must have a value.")
 
 
 # when user goes to Payment, this instance is created

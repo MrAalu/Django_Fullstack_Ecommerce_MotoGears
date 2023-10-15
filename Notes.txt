@@ -1,12 +1,6 @@
-TODO : Products Model with Category Choice/Extra Category Model + Brand 
+Todo  : Navbar middle ma Search functionality where after search display products in '/search' 
 
-Todo 2 : Navbar middle ma Search functionality where after search display products in '/search' 
-
-Image Box Tag : Sale / New , Logic on Template 
--if saleprice exists then put 'SALE'.
--if recent week added then put 'NEW'.
--if both then show both 'sale and new'
-
+Todo  : Cart page ma Qty inc/dec garda backend ma update too
 
 Pages : 
 1 HOME
@@ -15,13 +9,4 @@ Pages :
 3 Shopping Cart , Proceed to checkout
 3 Checkout
 4 Order Tracking , track order with unique order id and email
-
-HOME page detail :
-Banner,
-Header Cool Collection,
-Discount Offers Products,
-New Arrivals.
-
-
-BreadCrumbs in SHOP.html page
 

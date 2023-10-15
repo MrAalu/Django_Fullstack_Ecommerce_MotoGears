@@ -30,7 +30,7 @@
               {% if new_product.quantity <= 0 %}
                 <a href="#" class="btn btn-dark btn-hidden disabled" role="button">Out of Stock</a>
               {% else %}
-                <a href="#" class="btn btn-primary btn-hidden" role="button">Add to Cart</a>
+                <a class="btn btn-primary addtocartbtn" data-product-id="{{ new_product.id }}">Add to Cart</a>
               {% endif %}
             </div>
           </div>

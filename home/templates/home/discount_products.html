@@ -24,9 +24,9 @@
               </p>
 
               {% if discount_product.quantity <= 0 %}
-                <a href="#" class="btn btn-primary btn-dark disabled" role="button">Out of Stock</a>
+                <button class="btn btn-primary btn-dark disabled">Out of Stock</button>
               {% else %}
-                <a href="#" class="btn btn-primary btn-hidden" role="button">Add to Cart</a>
+                <a class="btn btn-primary addtocartbtn" data-product-id="{{ discount_product.id }}">Add to Cart</a>
               {% endif %}
             </div>
           </div>

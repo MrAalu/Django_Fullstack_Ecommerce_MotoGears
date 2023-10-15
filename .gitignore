@@ -1,7 +1,7 @@
-# Ignore User uploaded media Files
-.media
-*.media
-media
+# # Ignore User uploaded media Files
+# .media
+# *.media
+# media
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

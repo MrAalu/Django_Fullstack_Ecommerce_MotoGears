@@ -24,6 +24,7 @@
 {% endblock %}
 
 {% block content %}
+  <link rel="stylesheet" href="{% static 'css/cart.css' %}" />
   <div class="cart-items-div">
     {% comment %}LOOP Products here{% endcomment %}
     <div class="row my-2">
@@ -45,7 +46,7 @@
             <label for="quantity">Quantity:</label>
             <div class="custom-number-input">
               <button type="button" id="decrement">-</button>
-              <input type="number" name="quantity" id="quantity" min="1" value="1" readonly />
+              <input type="number" name="quantity" id="quantity" min="1" value="1" />
               <button type="button" id="increment">+</button>
             </div>
           </div>

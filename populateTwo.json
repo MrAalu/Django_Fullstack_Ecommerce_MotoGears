@@ -1,0 +1,111 @@
+[
+  {
+    "model": "home.ProductModel",
+    "pk": 1,
+    "fields": {
+      "title": "Waterproof Full Boots",
+      "image": "products/Boot.jpg",
+      "original_price": 3500,
+      "sale_price": 3200,
+      "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam esse pariatur, voluptatum iure dolorem voluptates debitis odit ducimus eligendi, accusantium reiciendis quos, officia quo quod a modi et asperiores similique eum exercitationem cupiditate ratione sed commodi molestiae. Aliquam, nobis voluptas voluptatem suscipit tenetur, sint tempora, dolor dolores vel repellat hic.",
+      "quantity": 5,
+      "created_at": "2023-10-15 06:44:04.541487",
+      "updated_at": "2023-10-15 06:44:04.541487",
+      "brand_id": 1,
+      "category_id": 3
+    }
+  },
+  {
+    "model": "home.ProductModel",
+    "pk": 2,
+    "fields": {
+      "title": "Harley Davidson Steel Boots",
+      "image": "products/BootHarley.jpg",
+      "original_price": 3900,
+      "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam esse pariatur, voluptatum iure dolorem voluptates debitis odit ducimus eligendi, accusantium reiciendis quos, officia quo quod a modi et asperiores similique eum exercitationem cupiditate ratione sed commodi molestiae. Aliquam, nobis voluptas voluptatem suscipit tenetur, sint tempora, dolor dolores vel repellat hic.",
+      "quantity": 5,
+      "created_at": "2023-10-15 06:44:04.541487",
+      "updated_at": "2023-10-15 06:44:04.541487",
+      "brand_id": 5,
+      "category_id": 3
+    }
+  },
+  {
+    "model": "home.ProductModel",
+    "pk": 3,
+    "fields": {
+      "title": "Black Half Gloves",
+      "image": "products/Gloves.jpg",
+      "original_price": 2300,
+      "sale_price": 1900,
+      "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam esse pariatur, voluptatum iure dolorem voluptates debitis odit ducimus eligendi, accusantium reiciendis quos, officia quo quod a modi et asperiores similique eum exercitationem cupiditate ratione sed commodi molestiae. Aliquam, nobis voluptas voluptatem suscipit tenetur, sint tempora, dolor dolores vel repellat hic.",
+      "quantity": 5,
+      "created_at": "2023-10-15 06:44:04.541487",
+      "updated_at": "2023-10-15 06:44:04.541487",
+      "brand_id": 4,
+      "category_id": 5
+    }
+  },
+  {
+    "model": "home.ProductModel",
+    "pk": 4,
+    "fields": {
+      "title": "Red Black Helmet",
+      "image": "products/Helmet.jpg",
+      "original_price": 3500,
+      "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam esse pariatur, voluptatum iure dolorem voluptates debitis odit ducimus eligendi, accusantium reiciendis quos, officia quo quod a modi et asperiores similique eum exercitationem cupiditate ratione sed commodi molestiae. Aliquam, nobis voluptas voluptatem suscipit tenetur, sint tempora, dolor dolores vel repellat hic.",
+      "quantity": 6,
+      "created_at": "2023-10-15 06:44:04.541487",
+      "updated_at": "2023-10-15 06:44:04.541487",
+      "brand_id": 1,
+      "category_id": 1
+    }
+  },
+  {
+    "model": "home.ProductModel",
+    "pk": 5,
+    "fields": {
+      "title": "Neon AGV Helmet",
+      "image": "products/Helmet.jpg",
+      "original_price": 4200,
+      "sale_price": 3800,
+      "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam esse pariatur, voluptatum iure dolorem voluptates debitis odit ducimus eligendi, accusantium reiciendis quos, officia quo quod a modi et asperiores similique eum exercitationem cupiditate ratione sed commodi molestiae. Aliquam, nobis voluptas voluptatem suscipit tenetur, sint tempora, dolor dolores vel repellat hic.",
+      "quantity": 3,
+      "created_at": "2023-10-15 06:44:04.541487",
+      "updated_at": "2023-10-15 06:44:04.541487",
+      "brand_id": 3,
+      "category_id": 1
+    }
+  },
+  {
+    "model": "home.ProductModel",
+    "pk": 6,
+    "fields": {
+      "title": "Waterproof Black Jacket",
+      "image": "products/Jacket.jpg",
+      "original_price": 3500,
+      "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam esse pariatur, voluptatum iure dolorem voluptates debitis odit ducimus eligendi, accusantium reiciendis quos, officia quo quod a modi et asperiores similique eum exercitationem cupiditate ratione sed commodi molestiae. Aliquam, nobis voluptas voluptatem suscipit tenetur, sint tempora, dolor dolores vel repellat hic.",
+      "quantity": 23,
+      "created_at": "2023-10-15 06:44:04.541487",
+      "updated_at": "2023-10-15 06:44:04.541487",
+      "brand_id": 2,
+      "category_id": 2
+    }
+  },
+  {
+    "model": "home.ProductModel",
+    "pk": 7,
+    "fields": {
+      "title": "Pants",
+      "image": "products/Pants.jpg",
+      "original_price": 4500,
+      "sale_price": 3999,
+      "description": "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam esse pariatur, voluptatum iure dolorem voluptates debitis odit ducimus eligendi, accusantium reiciendis quos, officia quo quod a modi et asperiores similique eum exercitationem cupiditate ratione sed commodi molestiae. Aliquam, nobis voluptas voluptatem suscipit tenetur, sint tempora, dolor dolores vel repellat hic.",
+      "quantity": 11,
+      "created_at": "2023-10-15 06:44:04.541487",
+      "updated_at": "2023-10-15 06:44:04.541487",
+      "brand_id": 2,
+      "category_id": 4
+    }
+  }
+]

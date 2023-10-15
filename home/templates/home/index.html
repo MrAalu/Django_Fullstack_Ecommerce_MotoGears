@@ -1,11 +1,11 @@
 {% extends 'layout/main.html' %} {% load static %}
 
 {% block header %}
-  {% include 'home/banner.html' %}
+  {% comment %} {% include 'home/banner.html' %} {% endcomment %}
 {% endblock %}
 
 {% block content %}
-  {% include 'home/collection.html' %}
+  {% comment %} {% include 'home/collection.html' %} {% endcomment %}
 
   {% include 'home/discount_products.html' %}
 

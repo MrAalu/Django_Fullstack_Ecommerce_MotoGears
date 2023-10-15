@@ -4,6 +4,11 @@
   <img src="https://static.djangoproject.com/img/logos/django-logo-positive.svg" alt="Django Logo">
 </div>
 
+### How to Populate DATABASE :
+
+1. py manage.py loaddata populateOne.json
+2. py manage.py loaddata populateTwo.json
+
 ### Project Structure
 
 SOON
@@ -14,6 +19,13 @@ SOON
 2. SimpleTestCase : used when DB is not necessary
 3. TransactionTestCase : directly test DB Transactions
 4. LiveServerTestCase : launches liveserver thread useful for testing with Browser-based tools like selenium.
+
+## Tech Stack
+
+**Front-End :** Html, CSS, JavaScript, BootStrap  
+Side Note : "AXIOS" is Used for API Call
+
+**Back-End :** Django, Sql
 
 ## Django Commands
 
