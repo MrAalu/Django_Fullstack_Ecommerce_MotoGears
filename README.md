@@ -22,10 +22,9 @@ SOON
 
 ## Tech Stack
 
-**Front-End :** Html, CSS, JavaScript, BootStrap  
-Side Note : "AXIOS" is Used for API Call
+**Front-End :** Html, CSS, JavaScript(AXIOS is Used for API call), BootStrap
 
-**Back-End :** Django, Sql
+**Back-End :** Django,DjangoRestFramework(API Only), Sql
 
 ## Django Commands
 

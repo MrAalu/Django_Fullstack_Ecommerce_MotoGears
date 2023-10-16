@@ -1,8 +1,8 @@
-from django.test import SimpleTestCase
+from django.test import SimpleTestCase, TestCase
 from django.urls import reverse
 
 
-class HomeTests(SimpleTestCase):
+class HomeTests(TestCase):
     def test_url_exists_at_current_location(self):
         # '/' URL ma yo APP Exists garxa ki nai
         response = self.client.get("/")
