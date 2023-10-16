@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from home.models import ProductModel, OrderItemModel, OrderModel
+from .api.views import get_customer
 
 
 # Returns individual carts total price ,images, Cart Summary (Subtotal,total cart items Counter)
@@ -38,3 +39,18 @@ class CartView(View):
 
         data = getCartDetails(carts)
         return render(request, "cart/cart.html", data)
+
+
+def delete_cart(request, product_id):
+    customer = get_customer(request)
+    if request.user.is_authenticated:
+        cart_item = OrderItemModel.objects.filter(
+            product_id=product_id, customer=customer
+        )
+    else:
+        cart_item = OrderItemModel.objects.filter(
+            product_id=product_id, device_id=customer
+        )
+
+    cart_item.delete()
+    return redirect("cart")

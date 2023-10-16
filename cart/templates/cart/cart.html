@@ -46,7 +46,7 @@
             <p>
               Price : Nrs. <span>{{ item.cart_item.price }}</span>/-
             </p>
-            <a href="{% url 'cart' %}" class="btn btn-danger">Delete</a>
+            <a class="btn btn-danger" href="{% url 'delete-cart' item.cart_item.product_id %}">Delete</a>
           </div>
 
           <div class="col my-3">

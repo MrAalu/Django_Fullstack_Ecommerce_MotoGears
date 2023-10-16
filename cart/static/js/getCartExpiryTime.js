@@ -10,13 +10,15 @@ const cart_expiry_cookie_value = getCookie("cart_expiry");
 
 const cartExpiryDate = document.getElementById("cart-expiry-date");
 
-const originalDate = new Date(cart_expiry_cookie_value);
-const options = {
-  weekday: "short",
-  year: "numeric",
-  month: "short",
-  day: "numeric",
-};
-const formattedDate = originalDate.toLocaleDateString("en-US", options);
+if (cartExpiryDate) {
+  const originalDate = new Date(cart_expiry_cookie_value);
+  const options = {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
+  const formattedDate = originalDate.toLocaleDateString("en-US", options);
 
-cartExpiryDate.textContent = formattedDate;
+  cartExpiryDate.textContent = formattedDate;
+}
