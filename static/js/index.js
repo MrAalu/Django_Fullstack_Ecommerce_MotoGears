@@ -17,4 +17,7 @@ var expires = new Date(Date.now() + 86400 * 1000 * 30).toUTCString();
 // Set the cookie with the updated expiration date
 document.cookie = "device=" + device + "; expires=" + expires + "; path=/";
 
+// When DeviceID cookie is created ,its given 30days expiry time which will be stored as Value to 'cart_expiry' cookie to display the cart expiry date on Cart page for Guest users
+document.cookie = "cart_expiry=" + expires;
+
 // Summary : We are generating a Unique Device id for Guest users to keep track of their CART items which then later, on Checkout process or if the user logs in , then we will MERGE this CART with user's Account !

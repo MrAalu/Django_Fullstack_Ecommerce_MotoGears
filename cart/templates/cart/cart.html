@@ -26,6 +26,14 @@
 {% block content %}
   <link rel="stylesheet" href="{% static 'css/cart.css' %}" />
   <div class="cart-items-div">
+    <!-- If user is not logged in and using Guest user CART -->
+    {% if not user.is_authenticated and cart_items %}
+      <p class="p text-center my-3">
+        This cart will expire in '<strong><span id="cart-expiry-date">*</span></strong>' ,
+        <a href="{% url 'account_login' %}">Login</a> to store your items and keep your cart active.
+      </p>
+    {% endif %}
+
     {% if cart_items %}
       {% for item in cart_items %}
         <div class="row my-2">
@@ -89,4 +97,5 @@
   {% endif %}
 
   <script src="{% static 'js/cart.js' %}"></script>
+  <script type="module" src="{% static 'js/getCartExpiryTime.js' %}"></script>
 {% endblock %}
