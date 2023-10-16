@@ -9,7 +9,12 @@ let device = getCookie("device");
 if (device == null || device == undefined) {
   device = getDeviceId();
 }
-// Sets the Cookie
-document.cookie = "device=" + device + ";domain=;path=/";
+
+// create expiry date for cookie
+// 86400 = 24hours in ms * 1000  = 1day
+var expires = new Date(Date.now() + 86400 * 1000 * 30).toUTCString();
+
+// Set the cookie with the updated expiration date
+document.cookie = "device=" + device + "; expires=" + expires + "; path=/";
 
 // Summary : We are generating a Unique Device id for Guest users to keep track of their CART items which then later, on Checkout process or if the user logs in , then we will MERGE this CART with user's Account !
