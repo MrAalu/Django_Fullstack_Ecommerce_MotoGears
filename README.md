@@ -4,14 +4,66 @@
   <img src="https://static.djangoproject.com/img/logos/django-logo-positive.svg" alt="Django Logo">
 </div>
 
-### How to Populate DATABASE :
-
-1. py manage.py loaddata populateOne.json
-2. py manage.py loaddata populateTwo.json
-
 ### Project Structure
 
 SOON
+
+## How to RUN Locally
+
+**_Make Sure Python is installed on your Machine with PIP File Path Setuped_**
+
+1. Clone the Project
+
+```
+   git clone https://github.com/MrAalu/Django_Fullstack_Ecommerce_MotoGears
+```
+
+2. Create Virtual Environment (Windows)
+   **_If you're using Linux/Mac then you can lookup 'how to create python django virtual environment on linux/mac'_**
+
+```
+   py -m venv env
+```
+
+3. Activate Virtual Environment (WINDOWS)
+
+```
+   env\Scripts\activate
+```
+
+4. After Virtual Environment is Activated ,Install Required Packages
+
+```
+pip install -r requirements.txt
+```
+
+5. Models Migrations
+
+```
+py manage.py makemigrations
+```
+
+6. Models Migrate
+
+```
+py manage.py migrate
+```
+
+7. Populate Database with Products
+
+```
+py manage.py loaddata populateOne.json
+```
+
+```
+py manage.py loaddata populateTwo.json
+```
+
+8. Run the Server
+
+```
+py manage.py runserver
+```
 
 ### TestCase
 
@@ -24,47 +76,9 @@ SOON
 
 **Front-End :** Html, CSS, JavaScript(AXIOS is Used for API call), BootStrap
 
-**Back-End :** Django,DjangoRestFramework(API Only), Sql
+**Back-End :** Django, DjangoRestFramework(API Only), Sql
 
-## Django Commands
-
-1. Create a Requirements.txt
-
-```
-   py -m pip freeze > requirements.txt
-```
-
-2. Install modules from Requirements.txt
-
-```
-   pip install -r requirements.txt
-```
-
-3. Create a VirtualEnv in WINDOWS
-
-```
-   py -m venv virtual_env_name
-```
-
-4. Activate VirtualEnv in WINDOWS
-
-```
-   virtual_env_name\Scripts\activate.bat
-```
-
-5. Create a VirtualEnv in LINUX
-
-```
- python3 -m venv virtual_env_name
-```
-
-6. Activate VirtualEnv in LINUX
-
-```
-source virtual_env_name/bin/activate
-```
-
-### VSCode Settings
+#### My VSCode Settings
 
 ```
 {
