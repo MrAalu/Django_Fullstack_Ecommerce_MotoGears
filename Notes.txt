@@ -5,8 +5,8 @@ Todo  : Cart page ma Qty inc/dec garda backend ma update too,handle inc/dec butt
 TODO : when mergin Cart , if logged in user had cart of item A and then guest user also has cart of item A then only increase the quantity
 
 TODO : if user added item A to cart with salePrice 5000, and now the sale price is gone and original price is 6000 then update all the carts with original price or new sale price- HINT : Signals can be used
+Note : cart price can be original_price or sale_price .
 
-TODO : Cart Update
 
 
 Pages : 

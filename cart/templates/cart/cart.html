@@ -26,54 +26,67 @@
 {% block content %}
   <link rel="stylesheet" href="{% static 'css/cart.css' %}" />
   <div class="cart-items-div">
-    {% comment %}LOOP Products here{% endcomment %}
-    <div class="row my-2">
-      <div class="col-md-2">
-        <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="img-fluid" alt="Product Image" />
-      </div>
-
-      <div class="col-md-6 my-2">
-        <h4>Product Title</h4>
-        <p>
-          Price : Nrs. <span>3000</span>/-
-        </p>
-        <a href="{% url 'cart' %}" class="btn btn-danger">Delete</a>
-      </div>
-
-      <div class="col my-3">
-        <form action="">
-          <div class="cart-item-quantity">
-            <label for="quantity">Quantity:</label>
-            <div class="custom-number-input">
-              <button type="button" id="decrement">-</button>
-              <input type="number" name="quantity" id="quantity" min="1" value="1" />
-              <button type="button" id="increment">+</button>
-            </div>
+    {% if cart_items %}
+      {% for item in cart_items %}
+        <div class="row my-2">
+          <div class="col-md-2">
+            <img src="{{ item.image.url }}" class="img-fluid" alt="Product Image" />
           </div>
-        </form>
-        <p class="my-2">
-          Subtotal : Nrs. <strong><span id="price">3000</span>/-</strong>
-        </p>
-      </div>
-    </div>
-    <hr />
+
+          <div class="col-md-6 my-2">
+            <h4>{{ item.title }}</h4>
+            <p>
+              Price : Nrs. <span>{{ item.cart_item.price }}</span>/-
+            </p>
+            <a href="{% url 'cart' %}" class="btn btn-danger">Delete</a>
+          </div>
+
+          <div class="col my-3">
+            <form action="">
+              <div class="cart-item-quantity">
+                <label for="quantity">Quantity:</label>
+                <div class="custom-number-input">
+                  <button type="button" class="decrement">-</button>
+                  <input type="number" class="quantity" min="1" value="{{ item.cart_item.quantity }}" />
+                  <button type="button" class="increment">+</button>
+                </div>
+              </div>
+            </form>
+            <p class="my-2">
+              Subtotal : Nrs. <strong><span id="price">{{ item.cart_item.cart_total_price }}</span>/-</strong>
+            </p>
+          </div>
+        </div>
+        <hr />
+      {% endfor %}
+    {% endif %}
   </div>
 
-  <div class="row my-3">
-    <div class="col-md-8">
-      <!-- Empty Left side with Col8 to push summary div to right -->
+  {% if cart_items %}
+    <div class="row my-3">
+      <div class="col-md-8">
+        <!-- Empty Left side with Col8 to push summary div to right -->
+      </div>
+      <div class="col summary-div">
+        <h2 class="h2">Summary</h2>
+        <hr />
+        <p class="d-flex justify-content-between">
+          Total Items <span>{{ total_cart_items_counter }}</span>
+        </p> <hr />
+        <p class="d-flex justify-content-between">
+          Tax <span>Nrs.00/-</span>
+        </p> <hr />
+        <p class="d-flex justify-content-between">
+          Delivery Charge <span>Free</span>
+        </p> <hr />
+        <h6 class="d-flex justify-content-between">Grand Total : <span>Nrs.{{ sub_total_price }}/-</span></h6>
+        <hr />
+        <a href="#" class="btn btn-dark my-3">Proceed to Checkout</a>
+      </div>
     </div>
-    <div class="col summary-div">
-      <h2 class="h2">Summary</h2>
-      <hr />
-      <p class="d-flex justify-content-between">
-        Total Items : <span>1</span>
-      </p> <hr />
-      <h6 class="d-flex justify-content-between">Grand Total : <span>Nrs.5000</span></h6>
-      <hr />
-      <a href="#" class="btn btn-dark my-3">Proceed to Checkout</a>
-    </div>
-  </div>
+  {% else %}
+    <h3 class="h3 text-center my-5">0 Items in Cart</h3>
+  {% endif %}
 
   <script src="{% static 'js/cart.js' %}"></script>
 {% endblock %}

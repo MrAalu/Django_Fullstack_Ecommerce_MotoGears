@@ -47,9 +47,14 @@ class OrderItemModel(models.Model):
     product = models.ForeignKey(ProductModel, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    cart_total_price = models.DecimalField(
+        max_digits=10, decimal_places=2, null=True, blank=True
+    )
 
+    # Calculates each cart items total price
     def calculate_total_price(self):
-        return self.quantity * self.price
+        self.cart_total_price = self.quantity * self.price
+        self.save()
 
 
 # when user goes to Payment, this instance is created

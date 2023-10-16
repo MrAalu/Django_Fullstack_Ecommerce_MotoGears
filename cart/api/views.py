@@ -18,7 +18,7 @@ def get_customer(request):
 @api_view(["POST"])
 def addToCart(request):
     # Get the JSON data from the request body
-    post_data = json.loads(request.body.decode("utf-8"))
+    post_data = request.data
     # print(post_data)
 
     # Access the 'product_id' and 'quantity' from the JSON data
