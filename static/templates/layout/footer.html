@@ -1,0 +1,50 @@
+<footer class="text-center text-lg-start text-muted" style="background-color: rgba(255, 254, 196,0.1);">
+  <div class="container text-center text-md-start">
+    <div class="row">
+      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto my-4">
+        <h6 class="text-uppercase fw-bold mb-4"><i class="fas fa-dragon me-3"></i>MotoGears</h6>
+        <p>Riding gear and accessories for motorbike enthusiasts.</p>
+      </div>
+
+      <!-- URL Links -->
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto my-4">
+        <h6 class="text-uppercase fw-bold mb-4">Gear Up</h6>
+        <p>
+          <a href="{% url 'homepage' %}" class="text-reset">Home</a>
+        </p>
+        <p>
+          <a href="{% url 'shop' %}" class="text-reset">Shop</a>
+        </p>
+      </div>
+
+      <!-- Contact -->
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 my-4">
+        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+        <p>
+          <i class="fas fa-home me-3"></i> Kathmandu, Nepal
+        </p>
+        <p>
+          <i class="fas fa-envelope me-3"></i>
+          motogears@test.com
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="text-center p-4">
+    © <span id="current-year"></span> Copyright:
+    <a class="text-reset fw-bold" href="{% url 'homepage' %}">https://github.com/MrAalu</a>
+    <p>
+      Developed by <a href="https://github.com/MrAalu" target="_blank">MrAalu</a>
+    </p>
+
+    <!-- Javascript to get Current Year -->
+    <script>
+      const currentYearElement = document.getElementById('current-year')
+      if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear()
+      }
+    </script>
+  </div>
+</footer>
