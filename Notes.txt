@@ -1,9 +1,13 @@
 Todo  : Navbar middle ma Search functionality where after search display products in '/search' 
 
-Todo  : Cart page ma Qty inc/dec garda backend ma update too
+Todo  : Cart page ma Qty inc/dec garda backend ma update too,handle inc/dec button spam using Concurrent Req handling in backend (Hint : Atomic transaction)
 
-TODO : Partition JS Code. 
-ALso , add View btn icon on products 
+TODO : when mergin Cart , if logged in user had cart of item A and then guest user also has cart of item A then only increase the quantity
+
+TODO : if user added item A to cart with salePrice 5000, and now the sale price is gone and original price is 6000 then update all the carts with original price or new sale price- HINT : Signals can be used
+
+TODO : Cart Update
+
 
 Pages : 
 1 HOME

@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "cart",
     "shop",
     "userprofile",
+    "rest_framework",
     # ALL AUTH
     "django.contrib.sites",
     "allauth",

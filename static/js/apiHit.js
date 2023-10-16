@@ -6,7 +6,7 @@ export const apiHit = async (productId, quantity) => {
   try {
     const csrfToken = getCookie("csrftoken");
     const response = await axios.post(
-      `http://127.0.0.1:8000/cart/add-to-cart/`,
+      `http://127.0.0.1:8000/cart/api/add-to-cart/`,
       {
         product_id: productId,
         quantity: quantity,
