@@ -2,7 +2,7 @@
 
 import { getCookie } from "./getCookie.js";
 
-export const apiHit = async (productId, quantity) => {
+export const addToCartAPI = async (productId, quantity) => {
   try {
     const csrfToken = getCookie("csrftoken");
     const response = await axios.post(

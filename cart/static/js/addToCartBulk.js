@@ -2,7 +2,8 @@
 
 // Add to Cart products with Multiple Quantities from Product Detail/Individual Page or Cart Page
 
-import { apiHit } from "../../../static/js/apiHit.js";
+import { addToCartAPI } from "../../../static/js/apiAddToCart.js";
+import { getTotalCartCounterAPI } from "../../../static/js/apiGetTotalCartCounter.js";
 
 const addItemToCart_Quantity = async (event) => {
   event.preventDefault();
@@ -28,12 +29,13 @@ const addItemToCart_Quantity = async (event) => {
   } else if (total_Quantity <= 0) {
     infoMessage.textContent = `Minimum quantity is 1`;
   } else {
-    const data = await apiHit(productId, total_Quantity);
+    const data = await addToCartAPI(productId, total_Quantity);
 
     // Display backend jsonresponse message
     if (data.success == true) {
       infoMessage.style.color = "Green";
       infoMessage.textContent = data.message;
+      await getTotalCartCounterAPI();
     } else {
       infoMessage.style.color = "Red";
       infoMessage.textContent = data.message;

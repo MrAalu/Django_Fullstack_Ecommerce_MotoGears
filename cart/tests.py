@@ -2,7 +2,7 @@ from django.test import SimpleTestCase
 from django.urls import reverse
 
 
-class HomeTests(SimpleTestCase):
+class CartTests(SimpleTestCase):
     def test_url_exists_at_current_location(self):
         response = self.client.get("/cart/")
         self.assertEqual(response.status_code, 200)

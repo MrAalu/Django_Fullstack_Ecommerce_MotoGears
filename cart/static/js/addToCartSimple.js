@@ -2,7 +2,8 @@
 
 // Add to Cart from Products Listing i.e. Discount Products / New Arrival Products
 
-import { apiHit } from "../../../static/js/apiHit.js";
+import { addToCartAPI } from "../../../static/js/apiAddToCart.js";
+import { getTotalCartCounterAPI } from "../../../static/js/apiGetTotalCartCounter.js";
 
 const addItemToCart = async (event) => {
   // Access the clicked button
@@ -18,7 +19,7 @@ const addItemToCart = async (event) => {
   // Find the info message element within the product container
   const infoMessage = productContainer.querySelector(".info-message");
 
-  const data = await apiHit(productId, quantity);
+  const data = await addToCartAPI(productId, quantity);
 
   // Update the info message for the specific product
   infoMessage.style.display = "block";
@@ -27,6 +28,7 @@ const addItemToCart = async (event) => {
   if (data.success == true) {
     infoMessage.style.color = "Green";
     infoMessage.textContent = data.message;
+    await getTotalCartCounterAPI();
   } else {
     infoMessage.style.color = "Red";
     infoMessage.textContent = data.message;

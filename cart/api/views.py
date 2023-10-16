@@ -16,7 +16,7 @@ def get_customer(request):
 
 # View for adding items to the cart
 @api_view(["POST"])
-def addToCartView(request):
+def addToCart(request):
     # Get the JSON data from the request body
     post_data = json.loads(request.body.decode("utf-8"))
     # print(post_data)
@@ -87,3 +87,21 @@ def addToCartView(request):
 
     cart.save()
     return Response({"success": True, "message": "Successfully added item to Cart"})
+
+
+# Fetch Cart Item Counter for NAVBAR
+@api_view(["GET"])
+def cart_item_counter(request):
+    if request.user.is_authenticated:
+        carts = OrderItemModel.objects.filter(customer=request.user)
+    else:
+        device_id = request.COOKIES.get("device")
+        carts = OrderItemModel.objects.filter(device_id=device_id)
+    total_carts = len(carts)
+    return Response(
+        {
+            "success": True,
+            "total_carts": total_carts,
+            "message": "Cart Item Counter Fetched Successfully",
+        }
+    )
