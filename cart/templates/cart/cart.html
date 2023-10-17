@@ -43,6 +43,7 @@
 
           <div class="col-md-6 my-2">
             <h4>{{ item.title }}</h4>
+            <a href="{% url 'view_product' item.cart_item.product_id %}">View Product</a>
             <p>
               Price : Nrs. <span>{{ item.cart_item.price }}</span>/-
             </p>

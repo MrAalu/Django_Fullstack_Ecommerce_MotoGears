@@ -49,7 +49,11 @@ SOON
 ```
 
 5. Setup .ENV File  
-   -Else this error will be given : decouple.UndefinedValueError: SOCIALACCOUNT_PROVIDERS_github_APP_client_id not found. Declare it as envvar or define a default value...
+   -Else this error will be given : decouple.UndefinedValueError: SOCIALACCOUNT_PROVIDERS_github_APP_client_id not found. Declare it as envvar or define a default value...or Something SIMILAR
+
+```
+Create a file with name .env and copy all the contents of '.env.example' to newly created '.env' file
+```
 
 6. Models Migrations
 

@@ -2,7 +2,6 @@ Todo  : Navbar middle ma Search functionality where after search display product
 
 Todo  : Cart page ma Qty inc/dec garda backend ma update too,handle inc/dec button spam using Concurrent Req handling in backend (Hint : Atomic transaction)
 
-TODO : when mergin Cart , if logged in user had cart of item A and then guest user also has cart of item A then only increase the quantity
 
 TODO : if user added item A to cart with salePrice 5000, and now the sale price is gone and original price is 6000 then update all the carts with original price or new sale price- HINT : Signals can be used
 Note : cart price can be original_price or sale_price .
@@ -17,4 +16,7 @@ Pages :
 3 Checkout
 4 Order Tracking , track order with unique order id and email
 
-Future Features : Can automate the process of deleting Guest Carts after 30days if they dont login but,for now just displaying that the cart would be deleted after 'n' days
+Future Features : 
+1.Can automate the process of deleting Guest Carts after 30days if they dont login but,for now just displaying that the cart would be deleted after 'n' days
+
+2.Merge cart only when users logins instead of calling it everytime authenticated user visits Homepage
