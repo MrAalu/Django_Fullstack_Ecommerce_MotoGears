@@ -48,7 +48,10 @@ SOON
 
 ```
 
-5. Models Migrations
+5. Setup .ENV File  
+   -Else this error will be given : decouple.UndefinedValueError: SOCIALACCOUNT_PROVIDERS_github_APP_client_id not found. Declare it as envvar or define a default value...
+
+6. Models Migrations
 
 ```
 
@@ -56,7 +59,7 @@ SOON
 
 ```
 
-6. Models Migrate
+7. Models Migrate
 
 ```
 
@@ -64,7 +67,7 @@ SOON
 
 ```
 
-7. Populate Database with Products
+8. Populate Database with Products
 
 ```
 
@@ -78,7 +81,7 @@ SOON
 
 ```
 
-8. Run the Server
+9. Run the Server
 
 ```
 
