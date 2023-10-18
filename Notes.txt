@@ -2,12 +2,6 @@ Todo  : Navbar middle ma Search functionality where after search display product
 
 Todo  : Cart page ma Qty inc/dec garda backend ma update too,handle inc/dec button spam using Concurrent Req handling in backend (Hint : Atomic transaction)
 
-
-TODO : if user added item A to cart with salePrice 5000, and now the sale price is gone and original price is 6000 then update all the carts with original price or new sale price- HINT : Signals can be used
-Note : cart price can be original_price or sale_price .
-
-
-
 Pages : 
 1 HOME
 2 Shop with Search/Sort 

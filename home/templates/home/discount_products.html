@@ -27,6 +27,7 @@
                 <button class="btn btn-primary btn-dark disabled">Out of Stock</button>
               {% else %}
                 <button class="btn btn-primary addtocartbtns" data-product-id="{{ discount_product.id }}">Add to Cart</button>
+                <a href="{% url 'view_product' discount_product.id %}" class="btn btn-info">View</a>
                 <div class="info-message" id="infoMessage"></div>
               {% endif %}
             </div>
