@@ -1,8 +1,8 @@
-from django.test import SimpleTestCase
+from django.test import TestCase
 from django.urls import reverse
 
 
-class CartTests(SimpleTestCase):
+class CartTests(TestCase):
     def test_url_exists_at_current_location(self):
         response = self.client.get("/cart/")
         self.assertEqual(response.status_code, 200)
