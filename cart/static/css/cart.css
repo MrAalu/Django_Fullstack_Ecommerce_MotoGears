@@ -34,3 +34,11 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+/* Item Added to Cart prompt */
+.info-message {
+  font-size: 12px;
+  margin-top: 5px;
+  color: red;
+  display: none;
+}

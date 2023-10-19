@@ -50,20 +50,21 @@
             <a class="btn btn-danger" href="{% url 'delete-cart' item.cart_item.product_id %}">Delete</a>
           </div>
 
-          <div class="col my-3">
+          <div class="col my-3 cart_container">
             <form action="">
               <div class="cart-item-quantity">
                 <label for="quantity">Quantity:</label>
                 <div class="custom-number-input">
                   <button type="button" class="decrement">-</button>
-                  <input type="number" class="quantity" min="1" value="{{ item.cart_item.quantity }}" />
+                  <input type="number" class="quantity" min="1" value="{{ item.cart_item.quantity }}" data-product-id="{{ item.cart_item.product_id }}" />
                   <button type="button" class="increment">+</button>
                 </div>
               </div>
             </form>
             <p class="my-2">
-              Subtotal : Nrs. <strong><span id="price">{{ item.cart_item.cart_total_price }}</span>/-</strong>
+              Subtotal : Nrs. <strong><span class="cart_total_price">{{ item.cart_item.cart_total_price }}</span>/-</strong>
             </p>
+            <div class="info-message" id="infoMessage"></div>
           </div>
         </div>
         <hr />
@@ -88,7 +89,11 @@
         <p class="d-flex justify-content-between">
           Delivery Charge <span>Free</span>
         </p> <hr />
-        <h6 class="d-flex justify-content-between">Grand Total : <span>Nrs.{{ sub_total_price }}/-</span></h6>
+        <h6 class="d-flex justify-content-between">
+          Grand Total :<p>
+            Nrs. <span id="grand_total_price">{{ sub_total_price }}</span>/-
+          </p>
+        </h6>
         <hr />
         <a href="#" class="btn btn-dark my-3">Proceed to Checkout</a>
       </div>
@@ -97,6 +102,6 @@
     <h3 class="h3 text-center my-5">0 Items in Cart</h3>
   {% endif %}
 
-  <script src="{% static 'js/cart.js' %}"></script>
+  <script type="module" src="{% static 'js/cart.js' %}"></script>
   <script type="module" src="{% static 'js/getCartExpiryTime.js' %}"></script>
 {% endblock %}
