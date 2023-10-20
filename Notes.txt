@@ -1,14 +1,8 @@
 Todo  : Navbar middle ma Search functionality where after search display products in '/search' 
 
-Todo  : Cart page ma Qty inc/dec garda backend ma update too,handle inc/dec button spam using Concurrent Req handling in backend (Hint : Atomic transaction)
-
 Pages : 
-1 HOME
-2 Shop with Search/Sort 
-2 Individual Product Page
-3 Shopping Cart , Proceed to checkout
-3 Checkout
-4 Order Tracking , track order with unique order id and email
+Checkout
+Order Tracking , track order with unique order id and email (Can Generate Unique TrackOrderID)
 
 Future Features : 
 1.Can automate the process of deleting Guest Carts after 30days if they dont login but,for now just displaying that the cart would be deleted after 'n' days

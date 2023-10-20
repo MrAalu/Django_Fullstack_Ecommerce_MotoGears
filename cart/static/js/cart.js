@@ -24,6 +24,7 @@ incrementButtons.forEach(function (button) {
     const sub_total_element = cart_container.querySelector(".cart_total_price");
     sub_total_element.textContent = data.sub_total;
 
+    quantityInput.value = parseInt(data.new_quantity);
     grand_total_element.textContent = data.grand_total;
   });
 });
@@ -58,6 +59,7 @@ decrementButtons.forEach(function (button) {
         cart_container.querySelector(".cart_total_price");
       sub_total_element.textContent = data.sub_total;
 
+      quantityInput.value = parseInt(data.new_quantity);
       grand_total_element.textContent = data.grand_total;
     }
   });

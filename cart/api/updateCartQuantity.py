@@ -38,7 +38,7 @@ def updateCartQuantity(request):
     return Response(
         {
             "success": True,
-            "quantity": new_quantity,
+            "new_quantity": new_quantity,
             "sub_total": subtotal,
             "grand_total": grand_total,
         }
