@@ -6,6 +6,10 @@
 
 </div>
 
+### DEMO
+
+![](https://i.ibb.co/FBtCP1j/Ecom-Django-MRAALu.gif)
+
 ### Project Structure
 
 SOON
