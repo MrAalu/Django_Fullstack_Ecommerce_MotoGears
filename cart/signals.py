@@ -7,10 +7,14 @@ from home.models import ProductModel, OrderItemModel
 # Check if Original Price / Sale Price to be put
 @receiver(pre_save, sender=ProductModel)
 def update_cart_items_prices(sender, instance, **kwargs):
-    if instance.pk:
-        # Saving old model instance of Product
+    # Retrieving the old model instance of Product
+    try:
         old_instance = ProductModel.objects.get(pk=instance.pk)
+    except ProductModel.DoesNotExist:
+        old_instance = None
 
+    # Old_Instance (Model) exists
+    if old_instance is not None:
         if (
             instance.original_price != old_instance.original_price
             or instance.sale_price != old_instance.sale_price

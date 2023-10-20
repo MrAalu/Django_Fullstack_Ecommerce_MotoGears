@@ -25,8 +25,12 @@ class ProductModel(models.Model):
         max_digits=10, decimal_places=2, null=True, blank=True
     )
     description = models.TextField(null=True, blank=True)
-    category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
-    brand = models.ForeignKey(ProductBrand, on_delete=models.CASCADE)
+    category = models.ForeignKey(
+        ProductCategory, on_delete=models.CASCADE, related_name="products"
+    )
+    brand = models.ForeignKey(
+        ProductBrand, on_delete=models.CASCADE, related_name="products"
+    )
     quantity = models.PositiveIntegerField()
 
     # Created at is only changed once when model is created for first time.

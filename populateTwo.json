@@ -96,7 +96,7 @@
     "model": "home.ProductModel",
     "pk": 7,
     "fields": {
-      "title": "Pants",
+      "title": "Waterproof Pants",
       "image": "products/Pants.jpg",
       "original_price": 4500,
       "sale_price": 3999,
