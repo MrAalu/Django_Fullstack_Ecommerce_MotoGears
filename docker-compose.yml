@@ -1,0 +1,12 @@
+version: "3.11"
+
+services:
+  app:
+    build: .
+    volumes:
+      - .:/django_ecommerce_code
+    ports:
+      - 8000:8000
+    image: motogears_ecommerce:django
+    container_name: motogears_django_container
+    command: python manage.py runserver 0.0.0.0:8000

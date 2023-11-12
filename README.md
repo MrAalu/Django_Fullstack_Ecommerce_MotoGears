@@ -79,13 +79,7 @@ Create a file with name .env and copy all the contents of '.env.example' to newl
 
 ```
 
-    py manage.py loaddata populateOne.json
-
-```
-
-```
-
-    py manage.py loaddata populateTwo.json
+    py manage.py loaddata populateDatabase.json
 
 ```
 

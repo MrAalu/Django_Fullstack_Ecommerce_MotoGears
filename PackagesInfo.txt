@@ -13,5 +13,4 @@ pip install python-decouple
 pip install Pillow
 
 Populate DB : 
-1. py manage.py loaddata populateOne.json
-2. py manage.py loaddata populateTwo.json
+1. py manage.py loaddata populateDatabase.json
