@@ -181,6 +181,8 @@ def cancelView(request):
 
     try:
         cancelled_order = OrderModel.objects.get(pk=order_id)
+        # Retrieve cancelled_order respective delivery details and delete it too
+        cancelled_order.delivery_information.delete()
         cancelled_order.delete()
     except:
         pass
