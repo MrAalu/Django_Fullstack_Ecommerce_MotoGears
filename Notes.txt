@@ -8,12 +8,6 @@ Navbar must be Fixed,Scroll garda Navbar dekhinu paryo for better UX
 
 Notify admin about new Order.
 
--Bug FIX (Commit Change) : 
-1. cart_expiry cookie multiple
-2. addtocart garepaxi direct checkout page ma jada error ,fixed by calulating cart_total_price when instance is created
-3. Order Item model Updated to use __init__ constructor and save method instead of calling calulate_total_price()
-4. Homepage ma Delete inactive DeliveryInformationModel
-
 -Test Stripe "securely save information....checkout'
 
 

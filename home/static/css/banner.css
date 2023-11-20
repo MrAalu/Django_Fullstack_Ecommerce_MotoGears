@@ -1,0 +1,8 @@
+header .bg-image {
+  height: 35rem;
+  background-position: center bottom;
+  background-attachment: fixed;
+}
+header .mask {
+  background-color: rgba(0, 0, 0, 0.7);
+}
