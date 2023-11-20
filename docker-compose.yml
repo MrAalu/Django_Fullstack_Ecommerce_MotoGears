@@ -2,6 +2,8 @@ version: "3"
 
 services:
   app:
+    env_file:
+      - .env
     build: .
     volumes:
       - .:/django_ecommerce_code
@@ -9,4 +11,4 @@ services:
       - 8000:8000
     image: motogears_ecommerce:django
     container_name: motogears_django_container
-    command: python manage.py runserver 0.0.0.0:8000
+    command: sh -c "python manage.py makemigrations && python manage.py migrate && python manage.py loaddata populateDatabase.json && python manage.py runserver 0.0.0.0:8000"

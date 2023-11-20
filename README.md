@@ -14,6 +14,20 @@
 
 SOON
 
+## How to RUN using DOCKER
+
+1. Goto main folder where docker-compose.yml file is and run command (Building typically takes less than 60secs) :
+
+```
+docker-compose up
+```
+
+2. To Clear the Docker Cache(For Fresh Setup and Install)
+
+```
+docker system prune -a
+```
+
 ## How to RUN Locally
 
 **_Make Sure Python is installed on your Machine with PIP File Path Setuped_**
