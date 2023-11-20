@@ -4,6 +4,7 @@ import { getCookie } from "./getCookie.js";
 import { getDeviceId } from "./getDeviceID.js";
 
 let device = getCookie("device");
+let cart_expiry_cookie = getCookie("cart_expiry");
 
 // If user doesnt have a Device ID then generates one and sets the Cookie
 if (device == null || device == undefined) {
@@ -12,12 +13,14 @@ if (device == null || device == undefined) {
 
 // create expiry date for cookie
 // 86400 = 24hours in ms * 1000  = 1day
-var expires = new Date(Date.now() + 86400 * 1000 * 30).toUTCString();
+const expires = new Date(Date.now() + 86400 * 1000 * 30).toUTCString();
 
 // Set the cookie with the updated expiration date
 document.cookie = "device=" + device + "; expires=" + expires + "; path=/";
 
 // When DeviceID cookie is created ,its given 30days expiry time which will be stored as Value to 'cart_expiry' cookie to display the cart expiry date on Cart page for Guest users
-document.cookie = "cart_expiry=" + expires;
+if (cart_expiry_cookie == null || cart_expiry_cookie == undefined) {
+  document.cookie = "cart_expiry=" + expires + "; path=/";
+}
 
 // Summary : We are generating a Unique Device id for Guest users to keep track of their CART items which then later, on Checkout process or if the user logs in , then we will MERGE this CART with user's Account !

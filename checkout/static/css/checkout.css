@@ -1,0 +1,13 @@
+.ordered-items {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.212);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* Item Added to Cart prompt */
+#info-message {
+  font-size: 12px;
+  margin-top: 5px;
+  color: red;
+  display: none;
+}

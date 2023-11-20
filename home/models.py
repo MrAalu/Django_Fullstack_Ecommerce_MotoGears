@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+import uuid
+from checkout.models import DeliveryInformationModel
 
 
 class ProductCategory(models.Model):
@@ -43,7 +45,7 @@ class ProductModel(models.Model):
         return self.title
 
 
-# Users adding Products to cart creates new instance of this model
+# (CART Model) Users adding Products to cart creates new instance of this model
 class OrderItemModel(models.Model):
     # If user not logged in then 'customer' would be null and device_id would be stored
     customer = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
@@ -55,13 +57,17 @@ class OrderItemModel(models.Model):
         max_digits=10, decimal_places=2, null=True, blank=True
     )
 
-    # Calculates each cart items total price
-    def calculate_total_price(self):
+    def __init__(self, *args, **kwargs):
+        super(OrderItemModel, self).__init__(*args, **kwargs)
+        # Calculate total price when the instance is created
         self.cart_total_price = self.quantity * self.price
-        self.save()
+
+    def save(self, *args, **kwargs):
+        # Recalculate total price before saving updates
+        self.cart_total_price = self.quantity * self.price
+        super(OrderItemModel, self).save(*args, **kwargs)
 
 
-# when user goes to Payment, this instance is created
 ORDER_STATUS_CHOICES = [
     ("Processing", "Processing"),
     ("Shipping", "Shipping"),
@@ -70,12 +76,30 @@ ORDER_STATUS_CHOICES = [
 ]
 
 
+# when user places the Order,this model object is Created
 class OrderModel(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
+    delivery_information = models.ForeignKey(
+        DeliveryInformationModel, on_delete=models.SET_NULL, null=True, blank=True
+    )
     order_date = models.DateTimeField(auto_now_add=True)
     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
     order_status = models.CharField(
         max_length=50, choices=ORDER_STATUS_CHOICES, default="Processing"
     )
+    payment_type = models.CharField(max_length=50, editable=False)
+    track_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
 
-    # Get total Price , Sale price if exists then use that else original Price
+    # This becomes 'True' Only after the Webhook returns payment_intent.success or admin updates it on AdminPanel
+    is_paid = models.BooleanField(default=False)
+
+
+# After OrderModel is created,this object is created to represent which items,qty. was Purchased by User
+class PurchasedItemModel(models.Model):
+    order = models.ForeignKey(OrderModel, on_delete=models.CASCADE)
+    product = models.ForeignKey(ProductModel, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    cart_total_price = models.DecimalField(
+        max_digits=10, decimal_places=2, null=True, blank=True
+    )

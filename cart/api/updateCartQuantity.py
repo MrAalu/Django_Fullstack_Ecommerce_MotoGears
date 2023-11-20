@@ -22,7 +22,6 @@ def updateCartQuantity(request):
 
     carts.quantity = new_quantity
     carts.save()
-    carts.calculate_total_price()
     subtotal = carts.cart_total_price
 
     if request.user.is_authenticated:

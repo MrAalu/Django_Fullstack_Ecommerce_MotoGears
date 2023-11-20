@@ -1,0 +1,43 @@
+<!-- COD , Cash on Delivery Success -->
+
+{% extends 'layout/main.html' %}
+
+{% load static %}
+
+{% block content %}
+  {% if order_data %}
+    <div class="text-center my-3">
+      <h1 class="text-center">Cash on Delivery Order Placed Successfully</h1>
+      <img src="{% static 'images/CodIcon.png' %}" alt="CODIcon" class="img-fluid m-5" />
+    </div>
+
+    <p>
+      You can Track your Order status using this Track ID : <strong><span style="border-bottom: 1px solid black;">{{ order_data.track_id }}</span></strong>
+    </p>
+    <p>You can also Track All your Order's under Profile Section in 'MyOrders' Tab.</p>
+
+    <div class="my-3 mx-5" style="box-shadow: 0 0 10px #3333; width: fit-content;padding: 10px;border-radius: 15px;">
+      <h3 class="h3">Order Details</h3> <hr />
+      <p>
+        Ordered Date : <span>{{ order_data.order_date }}</span>
+      </p>
+      <p>
+        Ordere Status : <span>{{ order_data.order_status }}</span>
+      </p>
+      <p>
+        Payment Type : <span>{{ order_data.payment_type }}</span>
+      </p>
+      <p>
+        Total amount : Nrs. <strong><span>{{ order_data.total_amount }}</span>/-</strong>
+      </p>
+      <strong>Note : You can View Full Order Details in 'Profile' under 'MyOrders' tab</strong>
+    </div>
+    <br />
+  {% endif %}
+  <a href="#" class="btn btn-primary">Goto Profile</a>
+  <a href="{% url 'homepage' %}" class="btn btn-secondary">Back to Homepage</a>
+
+  <p class="text-center m-5">
+    If you want to <strong>Cancel</strong> you're order, you can contact us at email : <a href="mailto:motogears@test.com">motogears@test.com</a>
+  </p>
+{% endblock %}

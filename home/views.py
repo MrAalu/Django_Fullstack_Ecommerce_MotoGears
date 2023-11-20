@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.contrib import messages
 from .models import ProductModel, OrderItemModel
+from checkout.models import DeliveryInformationModel
 from decimal import Decimal
 from django.http import JsonResponse
 
@@ -41,6 +42,16 @@ def merge_guest_and_user_cart(request):
             guest_cart.save()
 
 
+# Deleting Inactive DeliveryInformationModels
+def delete_inactive_delivery_models(request):
+    inactive_delivery_information_model = DeliveryInformationModel.objects.filter(
+        customer=request.user, is_active=False
+    )
+
+    for i in inactive_delivery_information_model:
+        i.delete()
+
+
 class Homepage(View):
     def get(self, request):
         # Fetch only 4 recent updated products with Discounts
@@ -70,5 +81,6 @@ class Homepage(View):
         if request.user.is_authenticated:
             # User is loggedin , merge the guest cart
             merge_guest_and_user_cart(request)
+            delete_inactive_delivery_models(request)
 
         return render(request, "home/index.html", data)

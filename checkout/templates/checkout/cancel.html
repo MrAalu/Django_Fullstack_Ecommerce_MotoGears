@@ -1,0 +1,13 @@
+{% extends 'layout/main.html' %}
+
+{% load static %}
+
+{% block content %}
+  <div class="text-center my-3">
+    <h1 class="text-center">Payment CANCELLED</h1>
+    <img src="{% static 'images/CancelIcon.png' %}" alt="CODIcon" class="img-fluid m-5" />
+  </div>
+
+  <p class="p">Payment transaction was Cancelled !</p>
+  <a href="{% url 'homepage' %}" class="btn btn-secondary text-center">Back to Homepage</a>
+{% endblock %}
