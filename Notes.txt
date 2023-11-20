@@ -4,8 +4,6 @@ Documentation
 
 Profile/MyOrder -> Display all Orders and Orders/Details page ma Display Full details + Delivery address 
 
-Navbar must be Fixed,Scroll garda Navbar dekhinu paryo for better UX
-
 Notify admin about new Order.
 
 -Test Stripe "securely save information....checkout'
@@ -15,4 +13,6 @@ Future Features :
 1.Can automate the process of deleting Guest Carts after 30days if they dont login but,for now just displaying that the cart would be deleted after 'n' days
 
 2.Merge cart only when users logins instead of calling it everytime authenticated user visits Homepage
-If user signups directly to Checkout page then Guest cart wont be merged 
+-If user signups directly to Checkout page then Guest cart wont be merged . 
+
+We are also Deleting 'inactive' DeliveryInformationModel everytime authenticated user visits Homepage
