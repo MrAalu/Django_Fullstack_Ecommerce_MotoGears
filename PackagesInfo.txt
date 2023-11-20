@@ -1,16 +1,12 @@
 pip install django
-
+pip instal djangorestframework
 pip install django-allauth
-
 pip install django-crispy-forms
-
 pip install crispy-bootstrap4
-
 pip install python-dotenv
-
 pip install python-decouple
-
 pip install Pillow
+pip intall stripe
 
 Populate DB : 
 1. py manage.py loaddata populateDatabase.json
