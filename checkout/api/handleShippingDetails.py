@@ -15,6 +15,7 @@ def handleShippingForm(request):
     city = post_data.get("city", "")
     state = post_data.get("state", "")
     phone_number = post_data.get("phone_number", "")
+    email = post_data.get("email", "")
 
     # User's can have multiple Delivery Details for Multiple Orders
     DeliveryInformationModel.objects.create(
@@ -25,6 +26,7 @@ def handleShippingForm(request):
         city=city,
         state=state,
         phone_number=phone_number,
+        email=email,
     )
 
     return Response({"success": True})

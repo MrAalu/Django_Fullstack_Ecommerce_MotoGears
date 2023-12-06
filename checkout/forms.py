@@ -11,5 +11,6 @@ class DeliveryForm(forms.ModelForm):
             "address_line2",
             "city",
             "state",
+            "email",
             "phone_number",
         ]

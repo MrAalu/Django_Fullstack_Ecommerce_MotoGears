@@ -93,6 +93,9 @@ class OrderModel(models.Model):
     # This becomes 'True' Only after the Webhook returns payment_intent.success or admin updates it on AdminPanel
     is_paid = models.BooleanField(default=False)
 
+    def __str__(self):
+        return f"{self.pk} - Order Track ID : {self.track_id} | Payment Type : {self.payment_type} , Paid : {self.is_paid} | Order Status : {self.order_status}"
+
 
 # After OrderModel is created,this object is created to represent which items,qty. was Purchased by User
 class PurchasedItemModel(models.Model):

@@ -9,6 +9,7 @@ class DeliveryInformationModel(models.Model):
     address_line2 = models.CharField(max_length=255, blank=True, null=True)
     city = models.CharField(max_length=255)
     state = models.CharField(max_length=255)
+    email = models.EmailField()
     phone_number = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -17,4 +18,4 @@ class DeliveryInformationModel(models.Model):
     is_active = models.BooleanField(default=False, editable=False)
 
     def __str__(self):
-        return f"{self.full_name} - {self.address_line1}, {self.city}"
+        return f"{self.full_name} - {self.address_line1} , {self.address_line2} , {self.city} - {self.phone_number}"

@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import DeliveryForm
 from django.db import transaction
 from .models import DeliveryInformationModel
+from django.contrib.auth.models import User
 
 
 import stripe
@@ -44,6 +45,9 @@ After all this , if user again goes back to shopping and starts adding the items
 -Then, again user will have to Fill the Shipping Form (User can have Multiple Shipping Detail for each individual OrderModel)
 -Then , this whole process will Repeat
 """
+
+# When the Order is Placed , Mail will be sended to 3 Persons : Admin_Mail , Logged in User , Delivery Reciever Email
+admin_mail = settings.ADMIN_MAIL
 
 
 # renders Checkout.html and passes users Cart items i.e. 'Your Orders'
@@ -160,7 +164,53 @@ class CheckoutView(LoginRequiredMixin, View):
             return redirect(checkout_session.url, code=303)
 
         elif payment_type == "Cash-On-Delivery":
-            create_order("Cash-On-Delivery")
+            data = create_order("Cash-On-Delivery")
+
+            # Fetching OrderId and Sending MAIL for CASH ON DELIVERY
+            order_id = data["order"].pk
+            print(order_id)
+
+            # Updating is_paid of OrderModle to TRUE
+            order_data = OrderModel.objects.get(pk=order_id)
+
+            # Decrementing Purchased products Quantity
+            purchased_data = PurchasedItemModel.objects.filter(order=order_id)
+
+            purchased_qty = 0
+            for purchased_item in purchased_data:
+                purchased_qty = purchased_item.quantity
+                purchased_item.product.quantity = (
+                    purchased_item.product.quantity - purchased_qty
+                )
+                purchased_item.product.save()
+
+            purchased_items_data = PurchasedItemModel.objects.filter(order=order_data)
+            customer_info = f"Customer: {order_data.customer.username}"
+
+            products_info = "Products : \n"
+            for i in purchased_items_data:
+                products_info += f"{i.product}, Quantity: {i.quantity}, Price: Nrs.{i.price}, Cart Total Price: Nrs.{i.cart_total_price}/-\n\n"
+
+            delivery_details = f"Delivery Details :\n Receiver Name : {order_data.delivery_information.full_name}, \n Primary Address :  {order_data.delivery_information.address_line1},\n Secondary Address : {order_data.delivery_information.address_line2},\n City : {order_data.delivery_information.city},\n State :  {order_data.delivery_information.state},\n Phone : {order_data.delivery_information.phone_number}"
+
+            order_details = f"Order Details:\n Order Date : {order_data.order_date},\n Total Amount: Nrs.{order_data.total_amount}/-,\n Order Status: {order_data.order_status},\n Track ID: {order_data.track_id},\n Payment Type: {order_data.payment_type},\n Is_Amount_Paid: {order_data.is_paid}\n\n"
+
+            subject = "Order Details - MotoGears"
+            message = f"{customer_info}\n\n{products_info}\n\n{delivery_details}\n\n{order_details}"
+
+            email_from = settings.EMAIL_HOST_USER
+
+            recipient_list = [
+                admin_mail,
+                order_data.delivery_information.email,
+                self.request.user.email,
+            ]
+
+            # Filter out None values from the recipient_list
+            recipient_list = [email for email in recipient_list if email is not None]
+
+            send_mail(subject, message, email_from, recipient_list, fail_silently=False)
+
             return redirect("success-cod")
 
 
@@ -225,6 +275,10 @@ def my_webhook_view(request):
     # handle the checkout.session.completed event i.e. checkout is completed.
     # we can use this to send admin/client a Notification about successful payment of products,etc. + Decrement Products QTY and so on.
 
+    # For Webhook testing : stripe trigger payment_intent.succeeded
+    if event["type"] == "payment_intent.created":
+        print("Payment_Intent Success")
+
     if event["type"] == "checkout.session.completed":
         # Retrieve the session. If you require line items in the response, you may include them by expanding line_items.
         session = stripe.checkout.Session.retrieve(
@@ -240,6 +294,9 @@ def my_webhook_view(request):
 
     # Passed signature verification
     return HttpResponse(status=200)
+
+
+from django.core.mail import send_mail
 
 
 def fulfill_order(data):
@@ -263,3 +320,32 @@ def fulfill_order(data):
         purchased_item.product.save()
 
     print("Debit-Card payment Success ! Source : checkout/views.py/fulfill_order()")
+
+    purchased_items_data = PurchasedItemModel.objects.filter(order=order_data)
+    customer_info = f"Customer: {order_data.customer.username}"
+
+    products_info = "Products : \n"
+    for i in purchased_items_data:
+        products_info += f"{i.product}, Quantity: {i.quantity}, Price: Nrs.{i.price}, Cart Total Price: Nrs.{i.cart_total_price}/-\n\n"
+
+    delivery_details = f"Delivery Details :\n Receiver Name : {order_data.delivery_information.full_name}, \n Primary Address :  {order_data.delivery_information.address_line1},\n Secondary Address : {order_data.delivery_information.address_line2},\n City : {order_data.delivery_information.city},\n State :  {order_data.delivery_information.state},\n Phone : {order_data.delivery_information.phone_number}"
+
+    order_details = f"Order Details:\n Order Date : {order_data.order_date},\n Total Amount: Nrs.{order_data.total_amount}/-,\n Order Status: {order_data.order_status},\n Track ID: {order_data.track_id},\n Payment Type: {order_data.payment_type},\n Is_Amount_Paid: {order_data.is_paid}\n\n"
+
+    subject = "Order Details - MotoGears"
+    message = (
+        f"{customer_info}\n\n{products_info}\n\n{delivery_details}\n\n{order_details}"
+    )
+
+    email_from = settings.EMAIL_HOST_USER
+
+    recipient_list = [
+        admin_mail,
+        order_data.delivery_information.email,
+        order_data.customer.email,
+    ]
+
+    # Filter out None values from the recipient_list
+    recipient_list = [email for email in recipient_list if email is not None]
+
+    send_mail(subject, message, email_from, recipient_list, fail_silently=False)

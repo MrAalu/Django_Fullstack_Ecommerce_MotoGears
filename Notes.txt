@@ -4,9 +4,7 @@ Documentation
 
 Profile/MyOrder -> Display all Orders and Orders/Details page ma Display Full details + Delivery address 
 
-Notify admin about new Order.
-
--Test Stripe "securely save information....checkout'
+If cart added more than stock left then error is thrown on Qty Decrement of fulfill order payment
 
 
 Future Features : 
