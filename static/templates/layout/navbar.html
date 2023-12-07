@@ -10,7 +10,7 @@
       <div class="navbar-nav ms-auto">
         <a class="nav-link active mx-2" aria-current="page" href="{% url 'homepage' %}">Home</a>
         <a class="nav-link mx-2" href="{% url 'shop' %}">Shop</a>
-        <a class="nav-link mx-2" href="{% url 'cart' %}">Cart <img src="{% static 'images/ShopCart.png' %}" alt="CartIcon" width="20px" style="margin-bottom: 5px;" /> <strong><span id="cart-item-count">0</span></strong></a>
+        <a class="nav-link mx-2" href="{% url 'cart' %}">Cart <img src="{% static 'images/ShopCart.png' %}" alt="CartIcon" width="20px" style="margin-bottom: 5px;" /> <strong><sup><span id="cart-item-count" style="font-size: 1rem;">0</span></sup></strong></a>
 
         {% if user.is_authenticated %}
           <a class="nav-link mx-2" href="{% url 'profile' %}">Profile</a>
