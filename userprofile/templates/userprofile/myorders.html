@@ -6,7 +6,101 @@
     profile_sidebar_myorders.style.background = 'rgb(169, 195, 255)'
   </script>
 
-  <h1>My Orders</h1>
+  <h1 class="h1 text-center">My Orders</h1>
   <br />
-  <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus quam incidunt exercitationem veniam odio! Nulla, quis repellat? Optio architecto id quas tempore soluta officia totam labore iure unde veritatis asperiores dolore illo debitis esse, fugiat laborum nam! Molestias velit hic magni inventore cumque, debitis odit, aliquid voluptatibus vel temporibus deserunt?</h2>
+
+  {% if myorders %}
+    <table class="table align-middle mb-0 bg-white">
+      <thead class="bg-light">
+        <tr>
+          <th>Ordered Items</th>
+          <th>Shipping Details</th>
+          <th>Status</th>
+          <th>Payments</th>
+          <th>Total Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for myorder in myorders %}
+          <tr>
+            <td>
+              <div class="ms-3">
+                <div class="ordered-products">
+                  {% for i in myorder.purchased_items %}
+                    <div class="d-flex align-items-center">
+                      <img src="{{ i.product.image.url }}" alt="" style="width: 80px; height: 80px;object-fit: contain;" />
+                      <div class="ms-3">
+                        <p class="fw-bold mb-1">{{ i.product.title }}</p>
+                        <p class="text-muted mb-0">Quantity : {{ i.quantity }}</p>
+                        <p class="text-muted mb-0">Price : Nrs.{{ i.price }}/-</p>
+                        <p class="text-muted mb-0">Sub total : Nrs.{{ i.cart_total_price }}/-</p>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+                <p class="fw-normal my-1">
+                  Ordered at <strong>{{ myorder.order_date }}</strong>
+                </p>
+              </div>
+            </td>
+
+            <td>
+              <div class="shipping-details">
+                <p class="fw-normal">
+                  Track ID: <strong><span style="border-bottom: 1px solid black;">{{ myorder.track_id }}</span></strong>
+                </p>
+                <p class="fw-normal mb-1">
+                  <i class="fas fa-box-archive"></i> Received by '<strong>{{ myorder.delivery_information.full_name }}</strong>'
+                </p>
+                <p class="fw-normal mb-1">
+                  <i class="fas fa-location-arrow"></i>
+                  {{ myorder.delivery_information.address_line1 }} {% if myorder.delivery_information.address_line2 %}
+                    | {{ myorder.delivery_information.address_line2 }}
+                  {% endif %}
+
+                  {{ myorder.delivery_information.city }},{{ myorder.delivery_information.state }}
+                </p>
+
+                <p class="fw-normal mb-1">
+                  <i class="far fa-envelope"></i> {{ myorder.delivery_information.email }}
+                </p>
+                <p class="fw-normal mb-1">
+                  <i class="fas fa-phone"></i> {{ myorder.delivery_information.phone_number }}
+                </p>
+              </div>
+            </td>
+
+            <td>
+              {% if myorder.order_status == 'Processing' %}
+                <span class="badge badge-success rounded-pill d-inline">Processing</span>
+              {% elif myorder.order_status == 'Shipping' %}
+                <span class="badge badge-secondary rounded-pill d-inline">Shipping</span>
+              {% endif %}
+            </td>
+
+            <td>
+              <p class="fw-normal mb-1">{{ myorder.payment_type }}</p>
+              <p class="text-muted mb-0">
+                {% if myorder.is_paid == True %}
+                  <strong>PAID</strong> <i class="fas fa-check"></i>
+                {% else %}
+                  <strong>Not PAID</strong> <i class="fas fa-xmark"></i>
+                {% endif %}
+              </p>
+            </td>
+
+            <td>
+              Nrs. <strong>{{ myorder.total_amount }}</strong>/-
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <p class="p text-center m-3">
+      <i>Note : 'Cancelled' and 'Delivered' orders are available in Order History</i>
+    </p>
+  {% else %}
+    <p class="p text-center">No Orders placed recently</p>
+  {% endif %}
 {% endblock %}

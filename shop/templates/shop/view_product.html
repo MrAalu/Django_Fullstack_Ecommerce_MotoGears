@@ -29,40 +29,41 @@
 
 {% block content %}
   <link rel="stylesheet" href="{% static 'css/view_product.css' %}" />
+  <div class="container">
+    <div class="card my-3">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{{ product.image.url }}" alt="Product Image Here" class="img-fluid rounded-start" style="max-width: 300px; " />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h2 class="card-title">{{ product.title }}</h2>
+            <p class="card-text">{{ product.description }}</p>
 
-  <div class="card my-3">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{{ product.image.url }}" alt="Product Image Here" class="img-fluid rounded-start" style="max-width: 300px; " />
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h2 class="card-title">{{ product.title }}</h2>
-          <p class="card-text">{{ product.description }}</p>
+            <p>Category : {{ product.category }}</p>
+            <p>Brand : {{ product.brand }}</p>
 
-          <p>Category : {{ product.category }}</p>
-          <p>Brand : {{ product.brand }}</p>
+            {% if product.sale_price %}
+              <h4><s style="color: red;">Nrs.{{ product.original_price }}</s> <span style="color: green;">{{ product.sale_price }}</span></h4>
+            {% else %}
+              <h4><span>Nrs.{{ product.original_price }}</span></h4>
+            {% endif %}
 
-          {% if product.sale_price %}
-            <h4><s style="color: red;">Nrs.{{ product.original_price }}</s> <span style="color: green;">{{ product.sale_price }}</span></h4>
-          {% else %}
-            <h4><span>Nrs.{{ product.original_price }}</span></h4>
-          {% endif %}
-
-          {% if product.quantity <= 0 %}
-            <a href="#" class="btn btn-dark btn-hidden disabled" role="button">Out of Stock</a>
-          {% else %}
-            <p>
-              Only <strong>'{{ product.quantity }}'</strong> left in stock.
-            </p>
-            <form>
-              <div class="form-group">
-                <input type="number" name="quantity" id="cart_item_quantity" min="1" value="1" max="{{ product.quantity }}" />
-                <button type="button" class="btn btn-primary" id="addtocartbtn" data-product-id="{{ product.id }}">Add to Cart</button>
-              </div>
-              <div class="info-message" id="infoMessage"></div>
-            </form>
-          {% endif %}
+            {% if product.quantity <= 0 %}
+              <a href="#" class="btn btn-dark btn-hidden disabled" role="button">Out of Stock</a>
+            {% else %}
+              <p>
+                Only <strong>'{{ product.quantity }}'</strong> left in stock.
+              </p>
+              <form>
+                <div class="form-group">
+                  <input type="number" name="quantity" id="cart_item_quantity" min="1" value="1" max="{{ product.quantity }}" />
+                  <button type="button" class="btn btn-primary" id="addtocartbtn" data-product-id="{{ product.id }}">Add to Cart</button>
+                </div>
+                <div class="info-message" id="infoMessage"></div>
+              </form>
+            {% endif %}
+          </div>
         </div>
       </div>
     </div>

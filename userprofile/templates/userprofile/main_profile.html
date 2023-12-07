@@ -3,7 +3,7 @@
 {% extends 'layout/main.html' %} {% load static %} {% block content %}
   <link rel="stylesheet" href="{% static 'css/userprofile.css' %}" />
   <div class="row">
-    <div class="col profile-sidebar">
+    <div class="col profile-sidebar my-5">
       <a class="btn" href="{% url 'profile' %}" id="profile-sidebar-dashboard">Dashboard</a>
       <a class="btn" href="{% url 'myorders' %}" id="profile-sidebar-myorders">My Orders</a>
       <a class="btn" href="{% url 'orderhistory' %}" id="profile-sidebar-orderhistory">Order Histroy</a>

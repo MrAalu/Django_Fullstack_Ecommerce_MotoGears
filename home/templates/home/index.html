@@ -5,9 +5,11 @@
 {% endblock %}
 
 {% block content %}
-  {% include 'home/collection.html' %}
+  <div class="container">
+    {% include 'home/collection.html' %}
 
-  {% include 'home/discount_products.html' %}
+    {% include 'home/discount_products.html' %}
 
-  {% include 'home/newarrivals_products.html' %}
+    {% include 'home/newarrivals_products.html' %}
+  </div>
 {% endblock %}
