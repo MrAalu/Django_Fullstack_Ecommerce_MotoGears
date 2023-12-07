@@ -12,6 +12,7 @@ urlpatterns = [
     path("shop/", include("shop.urls")),
     path("cart/", include("cart.urls")),
     path("checkout/", include("checkout.urls")),
+    path("profile/", include("userprofile.urls")),
     path("admin/", admin.site.urls),
     path("accounts/", include("allauth.urls")),
 ]

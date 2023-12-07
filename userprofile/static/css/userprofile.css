@@ -1,0 +1,10 @@
+.profile-sidebar a {
+  background-color: lightblue;
+  margin-bottom: 20px;
+  color: black;
+  display: block;
+}
+
+.profile-sidebar a:hover {
+  background-color: rgb(169, 195, 255);
+}

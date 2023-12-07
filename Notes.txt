@@ -4,6 +4,9 @@ Documentation
 
 Profile/MyOrder -> Display all Orders and Orders/Details page ma Display Full details + Delivery address 
 
+Wishlist for Loggedin Users
+Products Rating
+
 If cart added more than stock left then error is thrown on Qty Decrement of fulfill order payment
 
 
