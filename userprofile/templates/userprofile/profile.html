@@ -6,7 +6,64 @@
     profile_sidebar_profile.style.background = 'rgb(169, 195, 255)'
   </script>
 
-  <h1>Profile</h1>
+  <h1 class="h1 text-center">Profile</h1>
   <br />
-  <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus quam incidunt exercitationem veniam odio! Nulla, quis repellat? Optio architecto id quas tempore soluta officia totam labore iure unde veritatis asperiores dolore illo debitis esse, fugiat laborum nam! Molestias velit hic magni inventore cumque, debitis odit, aliquid voluptatibus vel temporibus deserunt?</h2>
+
+  <div class="container">
+    {% if user_data %}
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>
+              <i class="far fa-user"></i> Username
+            </th>
+            <td>{{ user_data.username }}</td>
+          </tr>
+
+          {% if user_data.first_name %}
+            <tr>
+              <th>First Name</th>
+              <td>{{ user_data.first_name }}</td>
+            </tr>
+          {% endif %}
+
+          {% if user_data.last_name %}
+            <tr>
+              <th>Last Name</th>
+              <td>{{ user_data.last_name }}</td>
+            </tr>
+          {% endif %}
+
+          <tr>
+            <th>
+              <i class="far fa-envelope"></i> Email
+            </th>
+            <td>{{ user_data.email }}</td>
+          </tr>
+
+          <tr>
+            <th>
+              <i class="far fa-calendar"></i> Date Joined
+            </th>
+            <td>{{ user_data.date_joined }}</td>
+          </tr>
+
+          <tr>
+            <th>
+              <i class="fas fa-unlock"></i> Password
+            </th>
+            <td>
+              <a href="{% url 'account_change_password' %}" class="btn btn-warning">Change Password</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    {% endif %}
+  </div>
 {% endblock %}
